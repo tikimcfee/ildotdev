@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects &mdash; Ivan Lugo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">home</a>
+        <a href="/projects/" class="active">projects</a>
+        <a href="/writing/">writing</a>
+        <a href="https://github.com/tikimcfee">github</a>
+    </nav>
+
+    <main>
+        <h1>projects<span class="accent">.</span></h1>
+
+        <a class="featured" href="/ide">
+            <h3>glyph3d IDE</h3>
+            <p>VS Code-style shell wrapping a 3D WebGL canvas. Activity bar, resizable
+            sidebar, tab bar, command palette, minimap, WebSocket remote control.
+            Load any GitHub repo or browse local projects via the single-binary Go server.</p>
+            <div class="tags">
+                <span class="tag">WebGL 2</span>
+                <span class="tag">Three.js</span>
+                <span class="tag">Go CLI</span>
+                <span class="tag">WebSocket</span>
+                <span class="tag">GPU Instancing</span>
+            </div>
+        </a>
+
+        <h2>tools</h2>
+
+        <ul class="compact-list">
+            <li>
+                <a href="/ide">glyph3d-cli</a>
+                <span class="desc">&mdash; single-binary server: HTTP + WebSocket + embedded IDE (~8MB)</span>
+            </li>
+            <li>
+                <a href="/tools/bake-atlas.html">atlas bake tool</a>
+                <span class="desc">&mdash; browser-based font atlas generator with extended charset support</span>
+            </li>
+        </ul>
+
+        <h2>demos &amp; experiments</h2>
+
+        <ul class="compact-list">
+            <li>
+                <a href="/app/viewer.html">3D repo viewer</a>
+                <span class="desc">&mdash; load any GitHub repo, visualize source in 3D space</span>
+            </li>
+            <li>
+                <a href="/examples/word-wall/">word wall</a>
+                <span class="desc">&mdash; dictionary visualization with embedding coordinates</span>
+            </li>
+            <li>
+                <a href="/examples/code-spectrometer/">code spectrometer</a>
+                <span class="desc">&mdash; periodic table of software concepts, lit by source analysis</span>
+            </li>
+            <li>
+                <a href="/examples/mod-layer-visualizer/">mod layer visualizer</a>
+                <span class="desc">&mdash; modular arithmetic grids stacked in 3D</span>
+            </li>
+            <li>
+                <a href="/examples/hand-tracking/">hand tracking</a>
+                <span class="desc">&mdash; 3D hand pose from webcam, ARKit, or mouse mock</span>
+            </li>
+            <li>
+                <a href="/examples/cross-ref-viz/">cross-ref visualizer</a>
+                <span class="desc">&mdash; animated multi-agent cross-referencing process</span>
+            </li>
+            <li>
+                <a href="/examples/picking-test/">picking test</a>
+                <span class="desc">&mdash; GPU picking + glyph-level highlight system</span>
+            </li>
+            <li>
+                <a href="/examples/render-test/">render test</a>
+                <span class="desc">&mdash; automated sync/async rendering verification</span>
+            </li>
+        </ul>
+
+        <h2>source</h2>
+
+        <ul class="compact-list">
+            <li>
+                <a href="https://github.com/tikimcfee/glyph3d-js">tikimcfee/glyph3d-js</a>
+                <span class="desc">&mdash; GPU-instanced 3D text rendering library for Three.js</span>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <a href="https://github.com/tikimcfee">github</a> &middot;
+        built with plain html and stubbornness
+    </footer>
+</body>
+</html>

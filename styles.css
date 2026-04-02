@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+    background: #0a0a0a;
+    color: #ccc;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Nav ---- */
+
+nav {
+    padding: 16px 24px;
+    border-bottom: 1px solid #1e1e2e;
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+}
+
+nav a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+nav a:hover, nav a.active {
+    color: #00ff88;
+}
+
+/* ---- Main ---- */
+
+main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    flex: 1;
+    width: 100%;
+}
+
+/* ---- Typography ---- */
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 16px;
+}
+
+h1 .accent {
+    color: #00ff88;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1e1e2e;
+}
+
+p {
+    margin-bottom: 12px;
+    color: #999;
+    font-size: 14px;
+}
+
+a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Hero CTA ---- */
+
+.cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #0a0a0a;
+    background: #00ff88;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.cta:hover {
+    background: #00cc66;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* ---- Featured project card ---- */
+
+.featured {
+    display: block;
+    margin-top: 12px;
+    padding: 20px 24px;
+    background: #111118;
+    border: 1px solid #1e1e2e;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+}
+
+.featured:hover {
+    border-color: #00ff88;
+    text-decoration: none;
+}
+
+.featured h3 {
+    font-size: 16px;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+}
+
+.featured p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.tags {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 10px;
+    color: #00ff88;
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 3px;
+    padding: 2px 8px;
+}
+
+/* ---- Compact list (examples, writing) ---- */
+
+.compact-list {
+    list-style: none;
+    margin-top: 8px;
+}
+
+.compact-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #111118;
+    font-size: 13px;
+}
+
+.compact-list li:last-child {
+    border-bottom: none;
+}
+
+.compact-list a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.compact-list a:hover {
+    color: #00ff88;
+}
+
+.compact-list .desc {
+    color: #555;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* ---- Writing / articles ---- */
+
+.article-date {
+    color: #444;
+    font-size: 11px;
+    min-width: 80px;
+    display: inline-block;
+}
+
+/* ---- Footer ---- */
+
+footer {
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid #1e1e2e;
+    font-size: 11px;
+    color: #333;
+}
+
+footer a {
+    color: #555;
+}
+
+footer a:hover {
+    color: #00ff88;
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 600px) {
+    main { padding: 32px 16px; }
+    h1 { font-size: 22px; }
+}
