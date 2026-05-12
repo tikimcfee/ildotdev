@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Tooling (if any future build step lands)
+node_modules/
+.cache/
+
+# Local notes / scratch
+*.local
+/scratch/
