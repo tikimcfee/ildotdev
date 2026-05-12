@@ -31,7 +31,3 @@ oath.html               the Programmer's Oath (2025 revision)
 `/ide/...` (e.g. `/ide`, `/ide/tools/bake-atlas.html`,
 `/ide/examples/word-wall/`). Path-based hosting: Caddy on `nerdcave` serves
 this repo at `/` and the glyph3d-js deployment at `/ide/`.
-
-Known dead target: `/ide/examples/cross-ref-viz/` — the cross-ref-viz
-example was removed from glyph3d-js. Restore it, repoint the link, or drop
-the list item (it appears in both `index.html` and `projects/index.html`).
