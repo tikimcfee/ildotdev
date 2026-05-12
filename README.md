@@ -27,8 +27,11 @@ oath.html               the Programmer's Oath (2025 revision)
 
 ## Pointers to glyph3d-js
 
-A few links in `index.html` and `projects/index.html` point at paths that
-used to be co-located (the IDE at `/ide`, `/tools/bake-atlas.html`,
-`/examples/cross-ref-viz/`). Those resolve to wherever the glyph3d-js
-deployment lives on `nerdcave` — patch them once the Caddy routing is
-settled. See the split notes for the full list.
+`index.html` and `projects/index.html` link to the IDE and its demos under
+`/ide/...` (e.g. `/ide`, `/ide/tools/bake-atlas.html`,
+`/ide/examples/word-wall/`). Path-based hosting: Caddy on `nerdcave` serves
+this repo at `/` and the glyph3d-js deployment at `/ide/`.
+
+Known dead target: `/ide/examples/cross-ref-viz/` — the cross-ref-viz
+example was removed from glyph3d-js. Restore it, repoint the link, or drop
+the list item (it appears in both `index.html` and `projects/index.html`).
