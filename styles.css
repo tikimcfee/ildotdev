@@ -8,6 +8,9 @@
   --accent: #a8a072;   /* links, labels, accents · ~6.7:1 · AA solid */
   --slot-bg: rgba(168, 160, 114, 0.04);
   --slot-border: rgba(168, 160, 114, 0.3); /* softened accent for slot edge */
+  --card-bg: var(--card-bg);    /* destinations + entries at rest */
+  --card-bg-hover: var(--card-bg-hover); /* destinations + entries on hover */
+  --code-bg: var(--code-bg);    /* inline code, mono tagged backgrounds */
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, Georgia, serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
@@ -54,7 +57,7 @@ nav.bar {
   padding: 0.2rem 0.45rem;
   border: 1px solid var(--rule);
   border-radius: 999px;
-  background: rgba(168, 160, 114, 0.02);
+  background: var(--card-bg);
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: thin;
@@ -132,14 +135,14 @@ a:hover { border-bottom-color: var(--accent); }
   padding: 0.8rem 1.1rem;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  background: rgba(168, 160, 114, 0.02);
+  background: var(--card-bg);
   color: var(--fg);
   text-decoration: none;
   transition: border-color 120ms, background 120ms;
 }
 .destination:hover {
   border-color: var(--accent);
-  background: rgba(168, 160, 114, 0.05);
+  background: var(--card-bg-hover);
 }
 .destination .label {
   margin-bottom: 0.55rem;
@@ -167,12 +170,12 @@ a:hover { border-bottom-color: var(--accent); }
   padding: 0.9rem 1.1rem;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  background: rgba(168, 160, 114, 0.02);
+  background: var(--card-bg);
   transition: border-color 120ms, background 120ms;
 }
 .entry:hover {
   border-color: var(--accent);
-  background: rgba(168, 160, 114, 0.05);
+  background: var(--card-bg-hover);
 }
 .entry + .entry { margin-top: 0.6rem; }
 .entry h3 {
@@ -256,7 +259,7 @@ article p { margin-bottom: 1rem; }
 article code {
   font-family: var(--mono);
   font-size: 0.88em;
-  background: rgba(168, 160, 114, 0.08);
+  background: var(--code-bg);
   padding: 2px 6px;
   border-radius: 3px;
   color: var(--fg);

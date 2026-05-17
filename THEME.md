@@ -20,6 +20,10 @@ to retheme the whole site.
 | `--accent` | `#a8a072` | links, labels, active nav | ~6.7:1 · AA+ |
 | `--rule` | `#2a261b` | hairlines, borders | decorative |
 | `--slot-bg` | `rgba(168,160,114,0.04)` | slot interior tint | — |
+| `--slot-border` | `rgba(168,160,114,0.3)` | softened accent for slot left stripe | — |
+| `--card-bg` | `rgba(168,160,114,0.02)` | destination + entry resting bg | — |
+| `--card-bg-hover` | `rgba(168,160,114,0.05)` | destination + entry hover bg | — |
+| `--code-bg` | `rgba(168,160,114,0.08)` | inline `<code>` background | — |
 | `--serif` | Iowan Old Style stack | body type | — |
 | `--mono` | IBM Plex Mono stack | labels, nav, meta | — |
 
