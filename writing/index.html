@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing &mdash; Ivan Lugo</title>
+    <title>writing — ivanlugo.dev</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="/nav.js" defer></script>
 </head>
 <body>
-    <nav>
-        <a href="/">home</a>
-        <a href="/projects/">projects</a>
-        <a href="/writing/" class="active">writing</a>
-        <a href="https://github.com/tikimcfee">github</a>
-    </nav>
+<nav class="bar">
+    <a href="/">home</a>
+    <a href="/projects/">projects</a>
+    <a href="/writing/" class="active">writing</a>
+    <a href="/work/">work</a>
+</nav>
 
-    <main>
-        <h1>writing<span class="accent">.</span></h1>
+<main>
+    <h1 class="sr-only">writing</h1>
 
-        <p>Notes, write-ups, and things worth keeping around.</p>
+    <section>
+        <div class="slot" data-name="page-intro">
+            <p>A short header for this page — why you write, what these are. Optional — could be one line ("notes worth keeping around") or nothing at all.</p>
+            <p class="shape">1–2 sentences, or none</p>
+        </div>
+    </section>
 
-        <ul class="compact-list">
-            <li>
-                <span class="article-date">2026-04</span>
-                <a href="/writing/building-glyph3d.html">building glyph3d</a>
-                <span class="desc">&mdash; why render code in 3D, and what fell out of it</span>
-            </li>
-        </ul>
-    </main>
+    <section>
+        <span class="label">pieces</span>
 
-    <footer>
-        <a href="https://github.com/tikimcfee">github</a> &middot;
-        built with plain html and stubbornness
-    </footer>
+        <div class="slot" data-name="piece-1">
+            <p>A writing entry. Date, title, and a one-line gloss in your voice.</p>
+            <p class="shape">date + linked title + one sentence</p>
+        </div>
+
+        <!-- When you fill a slot, replace its <div class="slot">…</div> with:
+
+        <div class="entry">
+            <div class="meta">2026-04</div>
+            <h3><a href="/writing/your-piece.html">your piece title</a></h3>
+            <p class="gloss">your one-line description.</p>
+        </div>
+
+        There's currently one piece on disk: /writing/building-glyph3d.html
+        Its body content was originally written by Claude. If you want it
+        listed here, fill the entry above; if you'd rather rewrite or
+        remove the piece itself, say so.
+        -->
+    </section>
+</main>
 </body>
 </html>

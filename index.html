@@ -3,62 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivan Lugo</title>
+    <title>ivanlugo.dev</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="/nav.js" defer></script>
 </head>
 <body>
-    <nav>
-        <a href="/" class="active">home</a>
-        <a href="/projects/">projects</a>
-        <a href="/writing/">writing</a>
-        <a href="/resume/">resume</a>
-        <a href="https://github.com/tikimcfee">github</a>
-    </nav>
+<nav class="bar">
+    <a href="/" class="active">home</a>
+    <a href="/projects/">projects</a>
+    <a href="/writing/">writing</a>
+    <a href="/work/">work</a>
+</nav>
 
-    <main>
-        <h1>hello there<span class="accent">.</span></h1>
+<main>
+    <h1 class="sr-only">ivanlugo.dev</h1>
 
-        <p>I'm Ivan. I build tools for understanding code &mdash; mostly by rendering
-        it in 3D and seeing what patterns fall out. GPU-instanced text, spatial
-        layouts, gesture input, the whole stack from shader to shell.</p>
+    <section>
+        <span class="label">opening</span>
+        <div class="slot" data-name="opening">
+            <p>The first words on the page — your name + a stance, a hello, or a single sentence.</p>
+            <p class="shape">one sentence · no longer than two screen-lines</p>
+        </div>
+    </section>
 
-        <p>This site is a few static files on a box in Falkenstein.
-        The interesting stuff is in the projects.</p>
+    <section>
+        <span class="label">what I'm up to</span>
+        <div class="slot" data-name="now">
+            <p>A short paragraph about the work currently in your hands — not a CV summary, more like what you'd tell a friend who asked "what are you up to?"</p>
+            <p class="shape">2–4 sentences</p>
+        </div>
+    </section>
 
-        <a class="cta" href="/ide">open the IDE</a>
+    <section>
+        <span class="label">one thing to point at</span>
+        <div class="slot" data-name="featured">
+            <p>If a stranger had 90 seconds, what one project or page do you want them to land on — and one line about why you care about it.</p>
+            <p class="shape">a linked title + one sentence underneath</p>
+        </div>
+    </section>
 
-        <h2>featured</h2>
-
-        <a class="featured" href="/projects/">
-            <h3>glyph3d IDE</h3>
-            <p>A 3D code visualization environment. Load any GitHub repo or local project
-            and explore its source as GPU-rendered text in navigable space. Single Go
-            binary, WebSocket relay, ~8MB.</p>
-            <div class="tags">
-                <span class="tag">WebGL 2</span>
-                <span class="tag">Three.js</span>
-                <span class="tag">Go</span>
-                <span class="tag">WebSocket</span>
-            </div>
-        </a>
-
-        <h2>recent</h2>
-
-        <ul class="compact-list">
-            <li>
-                <a href="/ide">glyph3d-cli installer</a>
-                <span class="desc">&mdash; platform-detecting install for agents and humans</span>
-            </li>
-            <li>
-                <a href="/ide/tools/bake-atlas.html">atlas bake tool</a>
-                <span class="desc">&mdash; pre-generate font atlases with extended charsets</span>
-            </li>
-        </ul>
-    </main>
-
-    <footer>
-        <a href="https://github.com/tikimcfee">github</a> &middot;
-        built with plain html and stubbornness
-    </footer>
+    <section>
+        <span class="label">closing</span>
+        <div class="slot" data-name="closing">
+            <p>A sign-off, an invitation to write you, or a quiet line at the bottom. Optional — delete this whole section if you don't want one.</p>
+        </div>
+    </section>
+</main>
 </body>
 </html>

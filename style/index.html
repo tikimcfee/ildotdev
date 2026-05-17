@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style — ivanlugo.dev</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/nav.js" defer></script>
+    <style>
+        /* Styleguide-only chrome */
+        .component {
+            padding: 2rem 0;
+            border-top: 1px solid var(--rule);
+        }
+        .component:last-of-type { border-bottom: 1px solid var(--rule); }
+        .component h2 {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 0.5rem;
+            font-weight: 400;
+        }
+        .component .note {
+            color: var(--dim);
+            font-size: 0.9rem;
+            margin: 0 0 1rem;
+        }
+        .preview {
+            padding: 1.5rem;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            margin: 1rem 0 0.75rem;
+            background: rgba(168, 160, 114, 0.015);
+        }
+        .preview > :last-child { margin-bottom: 0; }
+        pre.code {
+            font-family: var(--mono);
+            font-size: 0.76rem;
+            background: rgba(168, 160, 114, 0.05);
+            padding: 0.9rem 1.1rem;
+            border-radius: 4px;
+            color: var(--dim);
+            overflow-x: auto;
+            margin: 0;
+            line-height: 1.55;
+        }
+        .swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem;
+            margin: 0;
+        }
+        .swatch {
+            display: grid;
+            grid-template-columns: 3rem 1fr;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.5rem;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+        }
+        .swatch .chip {
+            width: 100%;
+            height: 2.5rem;
+            border-radius: 3px;
+            border: 1px solid var(--rule);
+        }
+        .swatch .meta { font-family: var(--mono); font-size: 0.72rem; line-height: 1.45; }
+        .swatch .meta .name { color: var(--accent); }
+        .swatch .meta .hex { color: var(--fg); }
+        .swatch .meta .ratio { color: var(--dim); }
+    </style>
+</head>
+<body>
+<nav class="bar">
+    <a href="/">home</a>
+    <a href="/projects/">projects</a>
+    <a href="/writing/">writing</a>
+    <a href="/work/">work</a>
+</nav>
+
+<main>
+    <h1 class="sr-only">styleguide</h1>
+
+    <section>
+        <span class="label">styleguide</span>
+        <p>Every component in the system, rendered live alongside its markup. Not linked from the nav — visit <code>/style/</code> directly. See also <a href="/THEME.md">THEME.md</a>.</p>
+    </section>
+
+    <div class="component">
+        <h2>palette</h2>
+        <p class="note">Espresso &amp; sage. Contrast ratios computed against <code>--bg</code>.</p>
+        <div class="swatches">
+            <div class="swatch"><div class="chip" style="background:#0e0c08"></div><div class="meta"><div class="name">--bg</div><div class="hex">#0e0c08</div><div class="ratio">background</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#e6dec9"></div><div class="meta"><div class="name">--fg</div><div class="hex">#e6dec9</div><div class="ratio">~13:1 · AAA</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#a39a7f"></div><div class="meta"><div class="name">--dim</div><div class="hex">#a39a7f</div><div class="ratio">~7:1 · AAA</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#a8a072"></div><div class="meta"><div class="name">--accent</div><div class="hex">#a8a072</div><div class="ratio">~6.7:1 · AA+</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#2a261b"></div><div class="meta"><div class="name">--rule</div><div class="hex">#2a261b</div><div class="ratio">hairlines</div></div></div>
+        </div>
+    </div>
+
+    <div class="component">
+        <h2>nav.bar</h2>
+        <p class="note">Already at the top of every page. Desktop: centered pill. Mobile (≤600px): full-width strip, horizontally scrollable. Active item highlighted in accent; <code>/nav.js</code> centers it in view on load.</p>
+        <pre class="code">&lt;nav class="bar"&gt;
+  &lt;a href="/" class="active"&gt;home&lt;/a&gt;
+  &lt;a href="/projects/"&gt;projects&lt;/a&gt;
+  ...
+&lt;/nav&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>destinations</h2>
+        <p class="note">Header cards for prominent app/external links. Used at the top of <code>/projects/</code> for IDE and GitHub. Two-column on desktop, stacked on mobile. Arrow slides on hover.</p>
+        <div class="preview">
+            <div class="destinations">
+                <a class="destination" href="#">
+                    <span class="label">label</span>
+                    <span class="title">action text <span class="arrow">→</span></span>
+                </a>
+                <a class="destination" href="#">
+                    <span class="label">label</span>
+                    <span class="title">another action <span class="arrow">→</span></span>
+                </a>
+            </div>
+        </div>
+        <pre class="code">&lt;div class="destinations"&gt;
+  &lt;a class="destination" href="..."&gt;
+    &lt;span class="label"&gt;label&lt;/span&gt;
+    &lt;span class="title"&gt;action text &lt;span class="arrow"&gt;→&lt;/span&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  ...
+&lt;/div&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>section + label</h2>
+        <p class="note">A page section with a small monospace label. Use sparingly; whitespace also works.</p>
+        <div class="preview">
+            <span class="label">work</span>
+            <p>Section content sits beneath the label, in body type.</p>
+        </div>
+        <pre class="code">&lt;section&gt;
+  &lt;span class="label"&gt;work&lt;/span&gt;
+  &lt;p&gt;Section content sits beneath the label, in body type.&lt;/p&gt;
+&lt;/section&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>entry</h2>
+        <p class="note">A list item — project, writing piece, anything that wants a title, optional date, and a one-line gloss. Auto-renders with hairline rules between items when stacked.</p>
+        <div class="preview">
+            <div class="entry">
+                <div class="meta">2026-04</div>
+                <h3><a href="#">title goes here</a></h3>
+                <p class="gloss">a one-line description, set in italic dim.</p>
+            </div>
+            <div class="entry">
+                <h3><a href="#">a project entry</a></h3>
+                <p class="gloss">the meta line is optional — drop it if there's no date.</p>
+            </div>
+        </div>
+        <pre class="code">&lt;div class="entry"&gt;
+  &lt;div class="meta"&gt;2026-04&lt;/div&gt;       &lt;!-- optional --&gt;
+  &lt;h3&gt;&lt;a href="..."&gt;title&lt;/a&gt;&lt;/h3&gt;
+  &lt;p class="gloss"&gt;one-line description.&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>slot</h2>
+        <p class="note">A placeholder waiting for words. The <code>data-name</code> shows as a small floater in the top right. Replace the entire <code>&lt;div class="slot"&gt;…&lt;/div&gt;</code> with your real content when ready.</p>
+        <div class="preview">
+            <div class="slot" data-name="example">
+                <p>Describe what kind of content goes here. Plain prose.</p>
+                <p class="shape">small mono guidance · shape · length</p>
+            </div>
+        </div>
+        <pre class="code">&lt;div class="slot" data-name="opening"&gt;
+  &lt;p&gt;Hint text describing what to write.&lt;/p&gt;
+  &lt;p class="shape"&gt;small mono guidance&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>article</h2>
+        <p class="note">For writing pieces. See <a href="/writing/_template.html">/writing/_template.html</a> for the starter file.</p>
+        <div class="preview">
+            <h1>piece title</h1>
+            <div class="article-date">2026-05</div>
+            <article>
+                <p>A paragraph of body prose. Inline <code>code()</code> picks up the muted background.</p>
+                <p class="byline">An optional byline note at the bottom, set as italic dim above a hairline.</p>
+            </article>
+        </div>
+        <pre class="code">&lt;main&gt;
+  &lt;h1&gt;piece title&lt;/h1&gt;
+  &lt;div class="article-date"&gt;2026-05&lt;/div&gt;
+  &lt;article&gt;
+    &lt;p&gt;Body. Inline &lt;code&gt;code&lt;/code&gt; works.&lt;/p&gt;
+    &lt;p class="byline"&gt;Optional byline.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</pre>
+    </div>
+
+    <div class="component">
+        <h2>helpers</h2>
+        <p class="note"><code>.accent</code> sets text to the accent color. <code>.sr-only</code> hides content visually but keeps it for screen readers — every sub-page uses this for an invisible h1.</p>
+        <pre class="code">&lt;span class="accent"&gt;.&lt;/span&gt;
+&lt;h1 class="sr-only"&gt;projects&lt;/h1&gt;</pre>
+    </div>
+</main>
+</body>
+</html>

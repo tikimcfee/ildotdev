@@ -3,93 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects &mdash; Ivan Lugo</title>
+    <title>projects — ivanlugo.dev</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="/nav.js" defer></script>
 </head>
 <body>
-    <nav>
-        <a href="/">home</a>
-        <a href="/projects/" class="active">projects</a>
-        <a href="/writing/">writing</a>
-        <a href="https://github.com/tikimcfee">github</a>
-    </nav>
+<nav class="bar">
+    <a href="/">home</a>
+    <a href="/projects/" class="active">projects</a>
+    <a href="/writing/">writing</a>
+    <a href="/work/">work</a>
+</nav>
 
-    <main>
-        <h1>projects<span class="accent">.</span></h1>
+<main>
+    <h1 class="sr-only">projects</h1>
 
-        <a class="featured" href="/ide">
-            <h3>glyph3d IDE</h3>
-            <p>VS Code-style shell wrapping a 3D WebGL canvas. Activity bar, resizable
-            sidebar, tab bar, command palette, minimap, WebSocket remote control.
-            Load any GitHub repo or browse local projects via the single-binary Go server.</p>
-            <div class="tags">
-                <span class="tag">WebGL 2</span>
-                <span class="tag">Three.js</span>
-                <span class="tag">Go CLI</span>
-                <span class="tag">WebSocket</span>
-                <span class="tag">GPU Instancing</span>
-            </div>
+    <div class="destinations">
+        <a class="destination" href="/ide">
+            <span class="label">ide</span>
+            <span class="title">open the IDE <span class="arrow">→</span></span>
         </a>
+        <a class="destination" href="https://github.com/tikimcfee">
+            <span class="label">github</span>
+            <span class="title">tikimcfee <span class="arrow">→</span></span>
+        </a>
+    </div>
 
-        <h2>tools</h2>
+    <section>
+        <div class="slot" data-name="page-intro">
+            <p>A short header for this page — one or two sentences framing what these things are to you. Through-line, ethos, or just "stuff I keep building." Optional — delete this slot if you'd rather the list speak for itself.</p>
+            <p class="shape">1–2 sentences, or none</p>
+        </div>
+    </section>
 
-        <ul class="compact-list">
-            <li>
-                <a href="/ide">glyph3d-cli</a>
-                <span class="desc">&mdash; single-binary server: HTTP + WebSocket + embedded IDE (~8MB)</span>
-            </li>
-            <li>
-                <a href="/ide/tools/bake-atlas.html">atlas bake tool</a>
-                <span class="desc">&mdash; browser-based font atlas generator with extended charset support</span>
-            </li>
-        </ul>
+    <section>
+        <span class="label">work</span>
 
-        <h2>demos &amp; experiments</h2>
+        <div class="slot" data-name="project-1">
+            <p>A project entry. The name you want it called on this site, a one-line description in your voice, and where the link goes.</p>
+            <p class="shape">title (linked) + one sentence</p>
+        </div>
 
-        <ul class="compact-list">
-            <li>
-                <a href="/ide/app/viewer.html">3D repo viewer</a>
-                <span class="desc">&mdash; load any GitHub repo, visualize source in 3D space</span>
-            </li>
-            <li>
-                <a href="/ide/examples/word-wall/">word wall</a>
-                <span class="desc">&mdash; dictionary visualization with embedding coordinates</span>
-            </li>
-            <li>
-                <a href="/ide/examples/code-spectrometer/">code spectrometer</a>
-                <span class="desc">&mdash; periodic table of software concepts, lit by source analysis</span>
-            </li>
-            <li>
-                <a href="/ide/examples/mod-layer-visualizer/">mod layer visualizer</a>
-                <span class="desc">&mdash; modular arithmetic grids stacked in 3D</span>
-            </li>
-            <li>
-                <a href="/ide/examples/hand-tracking/">hand tracking</a>
-                <span class="desc">&mdash; 3D hand pose from webcam, ARKit, or mouse mock</span>
-            </li>
-            <li>
-                <a href="/ide/examples/picking-test/">picking test</a>
-                <span class="desc">&mdash; GPU picking + glyph-level highlight system</span>
-            </li>
-            <li>
-                <a href="/ide/examples/render-test/">render test</a>
-                <span class="desc">&mdash; automated sync/async rendering verification</span>
-            </li>
-        </ul>
+        <div class="slot" data-name="project-2">
+            <p>Another project. Duplicate this slot as many times as you want; rename the data-name; fill it in.</p>
+            <p class="shape">title (linked) + one sentence</p>
+        </div>
 
-        <h2>source</h2>
+        <div class="slot" data-name="project-3">
+            <p>Another project. Or delete extra slots you don't need.</p>
+            <p class="shape">title (linked) + one sentence</p>
+        </div>
 
-        <ul class="compact-list">
-            <li>
-                <a href="https://github.com/tikimcfee/glyph3d-js">tikimcfee/glyph3d-js</a>
-                <span class="desc">&mdash; GPU-instanced 3D text rendering library for Three.js</span>
-            </li>
-        </ul>
-    </main>
+        <!-- When you fill a slot, replace its <div class="slot">…</div> with something like:
 
-    <footer>
-        <a href="https://github.com/tikimcfee">github</a> &middot;
-        built with plain html and stubbornness
-    </footer>
+        <div class="entry">
+            <h3><a href="/your/link/here">your project title</a></h3>
+            <p class="gloss">your one-line description in your voice.</p>
+        </div>
+
+        Entries auto-render with a hairline rule between them; no list markup needed.
+        -->
+    </section>
+</main>
 </body>
 </html>
