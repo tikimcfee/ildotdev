@@ -171,6 +171,8 @@ a:hover { border-bottom-color: var(--accent); }
   border: 1px solid var(--rule);
   border-radius: 4px;
   background: var(--card-bg);
+  color: var(--fg);
+  text-decoration: none;
   transition: border-color 120ms, background 120ms;
 }
 .entry:hover {
@@ -183,9 +185,10 @@ a:hover { border-bottom-color: var(--accent); }
   font-size: 1.15rem;
   margin: 0 0 0.35rem;
   font-family: var(--serif);
+  color: var(--fg);
+  transition: color 120ms;
 }
-.entry h3 a { color: var(--fg); }
-.entry h3 a:hover { color: var(--accent); border-bottom-color: transparent; }
+.entry:hover h3 { color: var(--accent); }
 .entry .gloss {
   color: var(--dim);
   font-style: italic;

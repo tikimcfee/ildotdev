@@ -19,33 +19,26 @@
     <h1 class="sr-only">writing</h1>
 
     <section>
-        <div class="slot" data-name="page-intro">
-            <p>A short header for this page — why you write, what these are. Optional — could be one line ("notes worth keeping around") or nothing at all.</p>
-            <p class="shape">1–2 sentences, or none</p>
-        </div>
+        <p>Notes and writeups — mostly on the things in <a href="/projects/">projects</a>: rendering, performance, and the road from idea to shipped.</p>
     </section>
 
     <section>
         <span class="label">pieces</span>
+        <p class="gloss">Nothing published yet.</p>
 
-        <div class="slot" data-name="piece-1">
-            <p>A writing entry. Date, title, and a one-line gloss in your voice.</p>
-            <p class="shape">date + linked title + one sentence</p>
-        </div>
+        <!-- To add a piece:
+             1. cp _template.html your-slug.html  (fill in title, date, body)
+             2. Replace the gloss line above (or add below it) with an entry:
 
-        <!-- When you fill a slot, replace its <div class="slot">…</div> with:
+             <a class="entry" href="/writing/your-slug.html">
+               <div class="meta">2026-05</div>
+               <h3>piece title</h3>
+               <p class="gloss">one-line description.</p>
+             </a>
 
-        <div class="entry">
-            <div class="meta">2026-04</div>
-            <h3><a href="/writing/your-piece.html">your piece title</a></h3>
-            <p class="gloss">your one-line description.</p>
-        </div>
-
-        There's currently one piece on disk: /writing/building-glyph3d.html
-        Its body content was originally written by Claude. If you want it
-        listed here, fill the entry above; if you'd rather rewrite or
-        remove the piece itself, say so.
-        -->
+             Stack multiple .entry blocks; they auto-divide.
+             Note: building-glyph3d.html exists on disk but is unlisted —
+             its body was Claude-drafted, awaiting your call to keep/rewrite/cut. -->
     </section>
 </main>
 </body>

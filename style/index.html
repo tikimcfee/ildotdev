@@ -150,23 +150,23 @@
 
     <div class="component">
         <h2>entry</h2>
-        <p class="note">A list item — project, writing piece, anything that wants a title, optional date, and a one-line gloss. Auto-renders with hairline rules between items when stacked.</p>
+        <p class="note">A list item — project, writing piece, anything that wants a title, optional date, and a one-line gloss. The whole card is the link. Stacks with a small gap between items.</p>
         <div class="preview">
-            <div class="entry">
+            <a class="entry" href="#">
                 <div class="meta">2026-04</div>
-                <h3><a href="#">title goes here</a></h3>
+                <h3>title goes here</h3>
                 <p class="gloss">a one-line description, set in italic dim.</p>
-            </div>
-            <div class="entry">
-                <h3><a href="#">a project entry</a></h3>
+            </a>
+            <a class="entry" href="#">
+                <h3>a project entry</h3>
                 <p class="gloss">the meta line is optional — drop it if there's no date.</p>
-            </div>
+            </a>
         </div>
-        <pre class="code">&lt;div class="entry"&gt;
+        <pre class="code">&lt;a class="entry" href="..."&gt;
   &lt;div class="meta"&gt;2026-04&lt;/div&gt;       &lt;!-- optional --&gt;
-  &lt;h3&gt;&lt;a href="..."&gt;title&lt;/a&gt;&lt;/h3&gt;
+  &lt;h3&gt;title&lt;/h3&gt;
   &lt;p class="gloss"&gt;one-line description.&lt;/p&gt;
-&lt;/div&gt;</pre>
+&lt;/a&gt;</pre>
     </div>
 
     <div class="component">

@@ -73,15 +73,15 @@ Header cards for prominent app/external links. Used at the top of `/projects/` f
 ```
 
 ### entry
-Project, writing piece, or any titled list item.
+Project, writing piece, or any titled list item. The whole card is the link.
 ```html
-<div class="entry">
+<a class="entry" href="...">
   <div class="meta">2026-04</div>          <!-- optional -->
-  <h3><a href="...">title</a></h3>
+  <h3>title</h3>
   <p class="gloss">one-line description.</p>
-</div>
+</a>
 ```
-Stack multiple `.entry` blocks; they auto-divide with hairlines.
+Stack multiple `.entry` blocks; they sit with a small gap between them.
 
 ### slot
 Placeholder waiting for words. Replace the entire `<div class="slot">…</div>`
