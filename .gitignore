@@ -6,9 +6,14 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Tooling (if any future build step lands)
+# SvelteKit build tooling
 node_modules/
+.svelte-kit/
 .cache/
+
+# NOTE: build/ is intentionally NOT ignored — it is the deployed artifact.
+# The box has no Node and deploys via `git pull`, so the prerendered output
+# is committed. See CLAUDE.md "Deploy".
 
 # Local notes / scratch
 *.local

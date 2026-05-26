@@ -1,7 +1,10 @@
 # THEME — espresso & sage
 
-The site's design system. One stylesheet (`/styles.css`), one script
-(`/nav.js`), a handful of composable components. No build step.
+The site's design system. A single served stylesheet (`/styles.css`,
+on disk at `static/styles.css`) plus Svelte components. The site is a
+SvelteKit app (`adapter-static`) prerendered to plain static HTML —
+`npm run dev` to edit with live reload, `npm run build` to regenerate
+the committed `build/`. See root `CLAUDE.md` for build & deploy.
 
 For a live render of every component, visit `/style/` in the browser.
 
@@ -40,14 +43,20 @@ Every component below has a live preview in `/style/`. Snippets here
 are for copy-paste convenience.
 
 ### nav.bar
-Already at the top of every page. Mark one item `class="active"`.
-```html
-<nav class="bar">
-  <a href="/" class="active">home</a>
-  <a href="/projects/">projects</a>
+The shared nav is `src/lib/Nav.svelte`, rendered once by the root
+`+layout.svelte`. Active state is derived from the current route — no
+manual `class="active"`. To add or rename a link, edit the `links`
+array in `Nav.svelte` (one place, every page updates). Its CSS still
+lives under `nav.bar` in `/styles.css`.
+```svelte
+const links = [
+  { href: '/', label: 'home' },
+  { href: '/projects/', label: 'projects' },
   ...
-</nav>
+];
 ```
+The prior-art survey reuses this same component via its nested layout,
+so its top pill can't drift from the core pages.
 
 ### section + label
 ```html
@@ -114,35 +123,41 @@ For a writing piece. See `/writing/_template.html` for the starter.
 
 ## Adding a writing piece
 
-1. `cp writing/_template.html writing/your-slug.html`
-2. Fill in `[title]`, `YYYY-MM`, and the article body.
-3. Open `writing/index.html` and replace the `piece-1` slot with a real `.entry` pointing at your new piece.
+1. Create `src/routes/writing/your-slug/+page.svelte` (inherits the
+   shared nav from the layout). Use a `<svelte:head><title>…</title>`
+   and the `article` markup below.
+2. Add an `<a class="entry">` for it in `src/routes/writing/+page.svelte`,
+   pointing at `/writing/your-slug/`.
+3. `npm run build` to regenerate `build/`.
+
+(The old `static/writing/_template.html` remains as a plain-HTML
+reference, but new pieces are routes.)
 
 ---
 
 ## Adding a new top-level page
 
-1. Copy any existing top-level page (e.g. `projects/index.html`).
-2. Update the `<title>` and `<nav>` (give the new page's link `class="active"`).
-3. Add a link to the new page inside the `<nav class="bar">` on **every** page (it's duplicated by design — there's no template system).
+1. Create `src/routes/your-page/+page.svelte`.
+2. Add one entry to the `links` array in `src/lib/Nav.svelte` — that's
+   the **only** place the nav is defined; every page picks it up.
+3. `npm run build`.
 
 ---
 
 ## Changing the palette
 
-1. Edit `:root` in `/styles.css`. That's the only place colors live.
-2. Visit `/style/` and eyeball every component on the new palette.
+1. Edit `:root` in `static/styles.css` (served at `/styles.css`). That's
+   the only place the core palette lives. The prior-art survey has its
+   own `:root` in `src/routes/prior-art/prior-art.css`, kept on the same
+   espresso & sage values.
+2. `npm run build`, then visit `/style/` and eyeball every component.
 3. Re-verify contrast for `--fg`, `--dim`, `--accent` against `--bg`.
-
-If you want to prototype multiple palettes side-by-side again, the
-old pattern was a `drafts/` directory with sub-folders per palette
-sharing a `_palette.css` — that scaffold is gone but easy to rebuild.
 
 ---
 
 ## Conventions
 
-- **No build step.** Edit, commit, push, pull on box. See root `CLAUDE.md` for deploy.
-- **No JS frameworks.** One tiny script (`/nav.js`) for nav scroll-to-active. Anything else needs a strong reason.
-- **Resist tooling.** If a change wants a bundler or templating engine, that's usually a signal to do less, not more.
-- **Resume and oath are their own worlds.** They have their own inline styles and don't pull `/styles.css`. Don't try to harmonize them unless you're rewriting both intentionally.
+- **Build step (SvelteKit).** `npm run build` prerenders to `build/`, which is committed and served. The box has no Node — it just `git pull`s the built output. See root `CLAUDE.md` for deploy.
+- **Keep the output static.** `adapter-static` with full prerender — every page is plain HTML that works without JS. Don't add server routes, runtime data loading, or anything that breaks prerendering.
+- **Resist further tooling.** The framework earns its place by killing nav duplication; it's not an invitation to pile on. New dependencies need a strong reason.
+- **Resume and oath are their own worlds.** Plain static files in `static/`, their own inline styles, no `/styles.css`. Don't harmonize them unless you're rewriting both intentionally. The prior-art survey is similar — its own stylesheet — but does reuse the shared nav.

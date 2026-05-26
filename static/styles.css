@@ -1,0 +1,296 @@
+/* ildotdev — espresso & sage */
+
+:root {
+  --bg: #0e0c08;
+  --fg: #e6dec9;       /* body text · ~13:1 on bg · AAA */
+  --dim: #a39a7f;      /* secondary text, nav, gloss · ~7:1 · AAA */
+  --rule: #2a261b;     /* hairlines · decorative */
+  --accent: #a8a072;   /* links, labels, accents · ~6.7:1 · AA solid */
+  --slot-bg: rgba(168, 160, 114, 0.04);
+  --slot-border: rgba(168, 160, 114, 0.3); /* softened accent for slot edge */
+  --card-bg: rgba(168, 160, 114, 0.02);    /* destinations + entries at rest */
+  --card-bg-hover: rgba(168, 160, 114, 0.05); /* destinations + entries on hover */
+  --code-bg: rgba(168, 160, 114, 0.08);    /* inline code, mono tagged backgrounds */
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, Georgia, serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  color: var(--fg);
+  background: var(--bg);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "onum";
+}
+
+/* ---- Screen-reader-only ---- */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+main {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* ---- Nav bar (unified across all pages) ---- */
+nav.bar {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin: 1.25rem auto 2rem;
+  width: fit-content;
+  max-width: calc(100vw - 2rem);
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card-bg);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+nav.bar::-webkit-scrollbar { height: 3px; }
+nav.bar::-webkit-scrollbar-track { background: transparent; }
+nav.bar::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+
+nav.bar a {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 120ms;
+}
+nav.bar a:hover { color: var(--accent); }
+nav.bar a.active { color: var(--accent); }
+
+@media (max-width: 600px) {
+  nav.bar {
+    width: auto;
+    max-width: none;
+    margin: 0 0 1.5rem;
+    padding: 0.5rem 1rem;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+/* ---- Default h1 (used by writing pieces) ---- */
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+.accent { color: var(--accent); }
+
+/* ---- Sections ---- */
+section { margin: 2rem 0; }
+.label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+p { margin: 0 0 1em; color: var(--fg); }
+
+/* ---- Inline links in body text ---- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms;
+}
+a:hover { border-bottom-color: var(--accent); }
+
+/* ---- Destinations (header cards for app/external links) ---- */
+.destinations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+}
+.destination {
+  display: block;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--card-bg);
+  color: var(--fg);
+  text-decoration: none;
+  transition: border-color 120ms, background 120ms;
+}
+.destination:hover {
+  border-color: var(--accent);
+  background: var(--card-bg-hover);
+}
+.destination .label {
+  margin-bottom: 0.55rem;
+}
+.destination .title {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--fg);
+}
+.destination .arrow {
+  color: var(--accent);
+  margin-left: 0.15rem;
+  transition: margin-left 120ms;
+}
+.destination:hover .arrow { margin-left: 0.35rem; }
+
+@media (max-width: 480px) {
+  .destinations { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* ---- Entries (project / writing items) ---- */
+.entry {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--card-bg);
+  color: var(--fg);
+  text-decoration: none;
+  transition: border-color 120ms, background 120ms;
+}
+.entry:hover {
+  border-color: var(--accent);
+  background: var(--card-bg-hover);
+}
+.entry + .entry { margin-top: 0.6rem; }
+.entry h3 {
+  font-weight: 400;
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+  font-family: var(--serif);
+  color: var(--fg);
+  transition: color 120ms;
+}
+.entry:hover h3 { color: var(--accent); }
+.entry .gloss {
+  color: var(--dim);
+  font-style: italic;
+  font-size: 0.96rem;
+  margin: 0;
+}
+.entry .meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+/* ---- Slot (placeholder waiting for words) ---- */
+.slot {
+  display: block;
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: inset 2px 0 0 var(--slot-border);
+  padding: 1.85rem 1.2rem 0.85rem 1.4rem;
+  color: var(--dim);
+  background: var(--slot-bg);
+  margin: 0.75rem 0;
+}
+.slot::after {
+  content: "[" attr(data-name) "]";
+  position: absolute;
+  top: 0.55rem;
+  right: 1rem;
+  font-family: var(--mono);
+  color: var(--accent);
+  opacity: 0.55;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+.slot p { margin: 0; }
+.slot p.shape {
+  margin-top: 0.5rem;
+  padding-right: 0;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+/* Slot nested inside an entry: flatten the card chrome so it reads as
+   a draft gloss line instead of a second card inside the first. */
+.entry .slot {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0.3rem 0 0;
+}
+.entry .slot::after { display: none; }
+.entry .slot p:first-child {
+  padding-right: 0;
+  font-style: italic;
+  color: var(--dim);
+  font-size: 0.96rem;
+}
+.entry .slot p.shape { display: none; }
+
+/* ---- Article (writing piece) ---- */
+article { margin-top: 1rem; }
+article p { margin-bottom: 1rem; }
+article code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--fg);
+}
+.article-date {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+}
+.byline {
+  color: var(--dim);
+  font-size: 0.88rem;
+  font-style: italic;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  margin-top: 2.5rem;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+@media (max-width: 480px) {
+  body { font-size: 17px; }
+  main { padding: 1rem 1.25rem 2.5rem; }
+  .slot {
+    padding: 0.85rem 1.1rem 0.85rem 1.25rem;
+    box-shadow: inset 2px 0 0 var(--slot-border);
+  }
+  .slot::after { display: none; }
+}

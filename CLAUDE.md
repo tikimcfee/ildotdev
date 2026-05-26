@@ -10,80 +10,91 @@ drifted, update the captured block (and the date) rather than rewriting prose.
 
 ## What this is
 
-`ivanlugo.dev` — Ivan's personal site. Plain static HTML/CSS, no build step.
-Sibling to `~/dev/glyph3d-js/`; extracted from that repo on 2026-05-12.
+`ivanlugo.dev` — Ivan's personal site. **SvelteKit app prerendered to
+static HTML** (`@sveltejs/adapter-static`, full prerender). Built locally
+with `npm run build`; the prerendered `build/` dir is committed and is
+what the box serves — the box has no Node (see Deploy). Sibling to
+`~/dev/glyph3d-js/`; extracted from that repo on 2026-05-12. Adopted
+SvelteKit on 2026-05-25 to kill nav duplication (one shared `Nav.svelte`).
+
+Node lives at `~/.local/node` (not system-wide). Prepend
+`~/.local/node/bin` to PATH before `node`/`npm`:
+`export PATH="$HOME/.local/node/bin:$PATH"`.
 
 ```
 $ git -C ~/dev/ildotdev log --oneline -5
-97b1370 resume: <link> font loading + preconnect; relax mobile media query
-23e3382 drop cross-ref-viz links — example was removed from glyph3d-js
-e2c8a1a README: record path-based routing decision, note cross-ref-viz dead link
-fad4e16 projects: repoint glyph3d-js links under /ide/
-0451a9a index.html: repoint glyph3d links to /ide/ for the path-based split
-# captured 2026-05-17 01:31 UTC
+17072e5 prior-art: embed the spatial-codebase field survey
+60cd7a8 redesign: descriptive index pages, whole-card links
+bf1c1af fix: card-bg/code-bg tokens were self-referential
+2b1d268 cleanup: tokenize warm-sage tints used by cards and code
+8502213 CLAUDE.md: refresh ls capture, add Design system section
+# captured 2026-05-26 02:56 UTC — the SvelteKit migration commit lands on top of these
 ```
 
 ## Repo shape
 
 ```
-$ ls ~/dev/ildotdev/
+$ ls ~/dev/ildotdev/        # (node_modules, .svelte-kit gitignored)
 CLAUDE.md
-favicon.ico
-index.html
-nav.js
-oath.html
-projects
 README.md
-resume
-style
-styles.css
 THEME.md
-work
-writing
+build            # committed prerender output — what the box serves
+package.json
+package-lock.json
+src
+static
+svelte.config.js
+vite.config.js
 
-$ ls ~/dev/ildotdev/projects ~/dev/ildotdev/resume ~/dev/ildotdev/style ~/dev/ildotdev/work ~/dev/ildotdev/writing
-/home/ivan/dev/ildotdev/projects:
-index.html
+$ find ~/dev/ildotdev/src -type f
+src/app.html                              # HTML shell; links /styles.css (not bundled)
+src/lib/Nav.svelte                        # the one shared nav — edit links here
+src/lib/PriorArtNav.svelte                # prior-art volume bar
+src/routes/+layout.js                     # prerender = true, trailingSlash = 'always'
+src/routes/+layout.svelte                 # root: <Nav/> + page
+src/routes/+page.svelte                   # home
+src/routes/projects/+page.svelte
+src/routes/writing/+page.svelte
+src/routes/work/+page.svelte
+src/routes/prior-art/+layout.svelte       # nests under root layout; adds PriorArtNav
+src/routes/prior-art/prior-art.css        # survey's own stylesheet (its own world)
+src/routes/prior-art/+page.svelte         # survey index
+src/routes/prior-art/{rendered-text,code-cities,vr-commercial,web-generative,gpu-text,positioning}/+page.svelte
 
-/home/ivan/dev/ildotdev/resume:
-index.html
-
-/home/ivan/dev/ildotdev/style:
-index.html
-
-/home/ivan/dev/ildotdev/work:
-index.html
-
-/home/ivan/dev/ildotdev/writing:
-building-glyph3d.html
-index.html
-_template.html
-# captured 2026-05-17 03:30 UTC
+$ ls ~/dev/ildotdev/static    # served as-is, not prerendered
+favicon.ico  nav.js  oath.html  resume/  style/  styles.css  writing/
+# (static/style/ = the unlisted styleguide; static/writing/ = building-glyph3d.html
+#  draft + _template.html; both still plain static HTML, own inline <nav>)
+# captured 2026-05-26 02:56 UTC
 ```
 
-No `package.json`, no `Makefile`, no test runner. Edit, commit, push, pull on box.
+`package.json` scripts: `npm run dev` (live edit), `npm run build`
+(regenerate `build/`), `npm run preview`. No test runner. Always
+`npm run build` before committing — `build/` is the deployed artifact.
 
 ## Design system
 
-The site uses a single stylesheet (`/styles.css`) and a tiny script
-(`/nav.js`). Theme is *espresso & sage* — warm dark serif, sage/olive
-accent. Tokens, contrast targets, and copy-paste component snippets are
-documented in `THEME.md`. A live render of every component lives at
-`/style/` (visit directly; not linked from nav).
+Core styles: `static/styles.css` (served at `/styles.css`, **not** bundled —
+single source of truth, linked from `app.html`). The nav is the shared
+`src/lib/Nav.svelte`. Theme is *espresso & sage* — warm dark serif,
+sage/olive accent. Tokens, contrast targets, and component snippets are in
+`THEME.md`. A live render of every component lives at `/style/` (visit
+directly; not linked from nav).
 
-- **Add a writing piece:** copy `writing/_template.html`, fill the slots,
-  add a `.entry` block in `writing/index.html`.
-- **Add a top-level page:** copy any sibling (e.g. `projects/index.html`),
-  add a corresponding `<a>` to **every** `<nav class="bar">` in the repo
-  (no template system — duplicated by design).
-- **Retheme:** edit `:root` in `/styles.css`; verify visually at `/style/`.
-- **The "slot" pattern:** pages can ship with `<div class="slot" data-name="...">`
-  placeholders. They render as left-bordered passages with hint text and a small
-  `[name]` floater. Replace the whole `<div class="slot">…</div>` with real
-  content when ready. The slot UI is in `styles.css` — leave it; future pages
-  may want it.
-- **Resume (`/resume/`) and Oath (`/oath.html`) are intentionally outside the
-  system.** They have their own inline styles and don't link `/styles.css`.
+- **Add a writing piece:** create `src/routes/writing/<slug>/+page.svelte`,
+  then add an `<a class="entry">` for it in `src/routes/writing/+page.svelte`.
+- **Add a top-level page:** create `src/routes/<page>/+page.svelte`, then add
+  one entry to the `links` array in `src/lib/Nav.svelte` (the only place the
+  nav is defined — every page picks it up).
+- **Retheme:** edit `:root` in `static/styles.css`; `npm run build`; verify at
+  `/style/`. The prior-art survey has its own `:root` in
+  `src/routes/prior-art/prior-art.css`, kept on the same values.
+- **The "slot" pattern:** the slot CSS still lives in `styles.css` for future
+  use, but the current pages ship real descriptive content, not slots.
+- **Resume (`/resume/`), Oath (`/oath.html`), and the styleguide (`/style/`)
+  are plain static files in `static/`** with their own styles — outside the
+  Svelte system. The prior-art survey has its own stylesheet too but **does**
+  reuse the shared `Nav.svelte`.
 
 ## Sibling project
 
@@ -137,10 +148,26 @@ main
 # captured 2026-05-17 01:31 UTC
 ```
 
-To ship: `git push` locally, then `ssh nerdcave 'git -C /srv/www/ildotdev pull'`.
-Always run `git status` on the remote tree first — a pull will either
-merge-conflict or stomp local edits if anything was changed directly on the box.
-Confirm with the user before the pull.
+To ship: `npm run build` locally (regenerates `build/`), commit source +
+`build/`, `git push`, then `ssh nerdcave 'git -C /srv/www/ildotdev pull'`.
+The box runs no build — it just pulls the committed `build/`. Always run
+`git status` on the remote tree first — a pull will either merge-conflict
+or stomp local edits if anything was changed directly on the box. Confirm
+with the user before the pull.
+
+**One-time Caddy change (required for the SvelteKit cutover):** the
+`ivanlugo.dev` root must point at the build output, not the repo root:
+
+```
+# in the `handle { ... }` block of /etc/caddy/Caddyfile:
+-   root * /srv/www/ildotdev
++   root * /srv/www/ildotdev/build
+```
+
+then `ssh nerdcave 'systemctl reload caddy'`. `/ide`, `/oath`,
+`/downloads` are unaffected (separate handle blocks). Until this lands the
+site still serves the pre-migration flat files. **Pending as of the
+migration commit — not yet applied to the box.**
 
 ## Deploy paths exist
 
@@ -220,7 +247,8 @@ txtspc3d.space, www.txtspc3d.space, vis3d.space, www.vis3d.space {
 ```
 
 Summary you can lean on (but verify if it matters):
-- `ivanlugo.dev/` → `/srv/www/ildotdev/` (this repo)
+- `ivanlugo.dev/` → `/srv/www/ildotdev/build/` (after the Caddy root change
+  above; was `/srv/www/ildotdev/` pre-migration)
 - `ivanlugo.dev/ide` and `/ide/*` → `/srv/www/glyph3d-js/`
 - `/oath` → `/oath.html`
 - `/downloads/*` → `/srv/downloads/` (not in any repo)
@@ -229,9 +257,12 @@ Summary you can lean on (but verify if it matters):
 ## Operating notes
 
 - Single-user box. No auth, no staging, no CDN. A bad push is live immediately.
-- Intentionally low-JS, low-dependency. Resist adding a build step or framework.
-  If a change wants tooling, that's usually a signal to do less, not more.
-- `oath.html` is content, not template — edit directly.
+- The build step (SvelteKit) exists to remove nav duplication — output stays
+  fully prerendered static HTML that works without JS. Keep it that way:
+  `adapter-static`, no server routes, no runtime data loading. Resist piling on
+  further tooling; new deps need a strong reason.
+- `static/oath.html` is content, not template — edit directly. Same for
+  `static/style/` and `static/writing/building-glyph3d.html` (plain static).
 
 ## When in doubt
 

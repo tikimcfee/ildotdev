@@ -1,0 +1,59 @@
+<svelte:head>
+	<title>Prior Art — rendering a whole codebase, spatially</title>
+</svelte:head>
+
+<main class="prose">
+
+  <p class="eyebrow">glyph3d-js · research notes</p>
+  <h1>Who else renders a whole codebase, all at once?</h1>
+  <p class="deck">A field survey of everything that has tried to put an entire git repository in front of you as one navigable thing — and an honest account of what is actually alive today.</p>
+
+  <p class="lead">This is a catalogue of prior art for spatial, whole-repository code visualization: the tools, the research prototypes, and the rendering techniques underneath them, with their current status and direct links. glyph3d-js appears in it as one entry among many — <a href="/prior-art/positioning/">Volume 06</a> locates it in the taxonomy. The point of the rest is the trail: who built what, when, and whether you can still open it.</p>
+
+  <p>It was assembled from a deep multi-pass search in May 2026: VISSOFT and SOFTVIS proceedings back to 2003, IEEE VR / ISMAR / CHI programming-tools tracks, university thesis repositories, defunct startups, low-star GitHub repos, and the GPU-text-rendering literature. Every link was checked at the time of writing. Status labels are a snapshot — the dead come back, the living rot.</p>
+
+  <div class="callout">
+    <p><strong>The split.</strong> "Render a codebase spatially" divides cleanly in two. The large, well-cited branch renders <em>metaphors</em> — buildings, islands, streets, galaxies — where the source text is at most a tooltip. The small branch renders <em>the actual source text</em> as the spatial primitive. That second branch has roughly six research prototypes in fifteen years; almost none were open-sourced, none are GPU-instanced at repo scale, and the closest published 3D precedent is Code Park, a 2017 UCF master's thesis that was never released. The two volumes you'd read to see this for yourself: <a href="/prior-art/rendered-text/">01 (rendered text)</a> for the small branch, <a href="/prior-art/code-cities/">02 (code cities)</a> for the large one.</p>
+  </div>
+
+  <h2 class="section-lead">The six volumes</h2>
+
+  <ol class="toc">
+    <li>
+      <a href="/prior-art/rendered-text/"><span class="num">01</span>The Rendered-Text Lineage</a>
+      <span class="blurb">Prototypes that put <em>actual readable source code</em> in spatial space — Code Bubbles, Code Canvas, Code Park (the UCF one), CodeHouse, IDEvelopAR, Primrose, VRIDE, Haystack, Padioleau's Codemap — plus the empirical work on whether people can read code in 3D at all. The core of the survey.</span>
+    </li>
+    <li>
+      <a href="/prior-art/code-cities/"><span class="num">02</span>The City Tradition</a>
+      <span class="blurb">Wettel's CodeCity and everything downstream — ExplorViz, IslandViz, CodeMetropolis, EvoStreets/SoftVis3D, CityVR, VR City, GoCity/JSCity/PHPCity, CodeCharta, SecCityVR. Buildings, not text. What's alive, what's archived.</span>
+    </li>
+    <li>
+      <a href="/prior-art/vr-commercial/"><span class="num">03</span>VR IDEs &amp; Commercial Code Maps</a>
+      <span class="blurb">Primitive.io (the VR code IDE that stalled), CodeSee (acquired into GitKraken), Sourcetrail (open-sourced, lives in a fork), CodeScene, CAST Imaging, Structure101, Glamorous Toolkit — and confirmation that the web IDEs (Codespaces, vscode.dev, Gitpod) do nothing spatial.</span>
+    </li>
+    <li>
+      <a href="/prior-art/web-generative/"><span class="num">04</span>Web Toys &amp; Generative Art</a>
+      <span class="blurb">Gource, code_swarm, Codeology, CodeFlower, GitHub's repo-visualizer, anvaka's galaxies, the contribution-graph cities, GitDiagram, CodeBoarding, and Adam Tornhill's crime-scene tooling. Which of these can you still open?</span>
+    </li>
+    <li>
+      <a href="/prior-art/gpu-text/"><span class="num">05</span>Rendering Text at Scale</a>
+      <span class="blurb">The engine layer: Slug (released into the public domain in 2026), MSDF, troika-three-text and why it stalls at ~500 instances, Zed's GPUI, Makepad, Glamorous Toolkit's Bloc, the instanced-glyph papers, and the 2002 Linux-kernel-in-3D demo.</span>
+    </li>
+    <li>
+      <a href="/prior-art/positioning/"><span class="num">06</span>Where glyph3d-js Sits</a>
+      <span class="blurb">The synthesis: the slot glyph3d-js occupies in the taxonomy, the projects that occupied it before and what happened to them, the structural reasons it keeps emptying out, and the citations that anchor the lineage.</span>
+    </li>
+  </ol>
+
+  <hr class="minor">
+
+  <p style="font-family:var(--mono);font-size:0.75rem;color:var(--dim)">
+    Compiled for the glyph3d-js repo as <code>prior-art/</code>. If you build in this space and were left out, that's a bug — the email's in the repo. These notes are meant to be linked to as much as from.
+  </p>
+
+</main>
+
+<footer>
+  glyph3d-js &nbsp;·&nbsp; prior-art research notes &nbsp;·&nbsp; compiled May 2026 &nbsp;·&nbsp; <a href="https://github.com/tikimcfee">github</a><br>
+  Every link verified at time of writing. Status is a snapshot — the dead come back, the living rot.
+</footer>

@@ -1,0 +1,19 @@
+<svelte:head>
+	<title>work — ivanlugo.dev</title>
+</svelte:head>
+
+<main>
+	<h1 class="sr-only">work</h1>
+
+	<section>
+		<a class="entry" href="/resume/">
+			<h3>resume</h3>
+			<p class="gloss">Current CV — staff engineering across iOS, mobile, full-stack rewrites, and internal AI tooling.</p>
+		</a>
+
+		<a class="entry" href="/oath.html">
+			<h3>oath</h3>
+			<p class="gloss">The 2025 Programmer's Oath — a craft commitment to honest, defect-free, provable code.</p>
+		</a>
+	</section>
+</main>

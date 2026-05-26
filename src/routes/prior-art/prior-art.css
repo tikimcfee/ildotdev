@@ -1,0 +1,295 @@
+/* prior-art.css — shared styles for the glyph3d-js prior-art research notes */
+
+/* Recolored to ildotdev's espresso & sage palette (see /styles.css and
+   /THEME.md). Layout and structure are unchanged; only the color model
+   moved from the original cool-grey/neon-green to warm dark/sage. */
+:root {
+  --bg:      #0e0c08;
+  --bg-card: #16130c;
+  --bg-card-hover: #1d1910;
+  --fg:      #e6dec9;
+  --fg-bright: #f2ecda;
+  --dim:     #a39a7f;
+  --dimmer:  #6b6450;
+  --rule:    #2a261b;
+  --accent:  #a8a072;
+  --accent-dim: #4a4630;
+  --amber:   #d4a44a;
+  --red:     #cd6f52;
+  --blue:    #7ea6c4;
+  --serif:   'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, Georgia, 'Times New Roman', serif;
+  --mono:    'IBM Plex Mono', ui-monospace, 'SF Mono', 'Liberation Mono', Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* The jump-back-to-root pill is now the shared <Nav> component (rendered by
+   the root layout above this one), so there's no local site-nav rule here —
+   it's the same nav as every other page, single source.
+
+   The app shell (app.html) links /styles.css on every prerendered page,
+   including these. A few of its element + .entry rules would otherwise leak
+   into the survey; neutralize them so this stylesheet stays the authority
+   for its own world. */
+a { border-bottom: none; }
+.entry:hover h3 { color: var(--fg-bright); }
+.entry + .entry { margin-top: 1rem; }
+
+/* ---- layout ---- */
+
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.topbar nav {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+.topbar a { color: var(--dim); text-decoration: none; }
+.topbar a:hover { color: var(--accent); }
+.topbar a.here { color: var(--fg-bright); }
+.topbar .spacer { flex: 1; }
+
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+}
+
+/* article-narrow pages (index, positioning) */
+main.prose { max-width: 42rem; }
+
+/* ---- masthead ---- */
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--fg-bright);
+  margin: 0 0 0.6rem;
+}
+.deck {
+  font-size: 1.12rem;
+  color: var(--dim);
+  font-style: italic;
+  margin: 0 0 2.2rem;
+  max-width: 38rem;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--fg-bright);
+  margin: 3.2rem 0 0.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+}
+h2 .count { font-family: var(--mono); font-size: 0.8rem; color: var(--dimmer); }
+
+h2.section-lead { border-top: none; padding-top: 0; }
+
+h3 {
+  font-weight: 600;
+  font-size: 1.18rem;
+  color: var(--fg-bright);
+  margin: 0 0 0.15rem;
+}
+
+p { margin: 0 0 1rem; }
+p.lead { font-size: 1.06rem; color: var(--fg); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong { color: var(--fg-bright); font-weight: 600; }
+em { color: var(--fg); }
+
+code, .mono { font-family: var(--mono); font-size: 0.86em; }
+code {
+  background: #1a160d;
+  border-radius: 3px;
+  padding: 0.08em 0.36em;
+  color: #cfc8b0;
+}
+
+hr.minor { border: none; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+
+/* ---- entry cards ---- */
+
+.entry {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.3rem 1.5rem 1.1rem;
+  margin: 1rem 0;
+  transition: border-color 0.15s, background 0.15s;
+}
+.entry:hover { border-color: #3a3424; background: var(--bg-card-hover); }
+.entry.headline { border-color: var(--accent-dim); }
+.entry.headline:hover { border-color: var(--accent); }
+
+.entry .meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  margin: 0.25rem 0 0.7rem;
+  line-height: 1.5;
+}
+.entry .meta .sep { color: var(--dimmer); padding: 0 0.15rem; }
+
+.entry p { font-size: 0.98rem; margin: 0 0 0.7rem; }
+.entry p:last-child { margin-bottom: 0; }
+.entry .links {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--dimmer);
+  margin-top: 0.5rem;
+}
+.entry .links a { color: var(--blue); }
+.entry .links .sep { color: var(--dimmer); padding: 0 0.35rem; }
+
+/* ---- badges ---- */
+
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.12em 0.5em;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.45rem;
+  border: 1px solid currentColor;
+  font-weight: 400;
+}
+.b-text   { color: var(--accent); }
+.b-3d     { color: var(--blue); }
+.b-vr     { color: #b58cd9; }
+.b-2d     { color: var(--dim); }
+.b-alive  { color: #6aa37e; }
+.b-dormant{ color: var(--amber); }
+.b-dead   { color: var(--red); }
+.b-paper  { color: var(--dim); }
+.b-commercial { color: #c9a96a; }
+
+/* status inline word */
+.st-alive   { color: #6aa37e; }
+.st-dormant { color: var(--amber); }
+.st-dead    { color: var(--red); }
+.st-paper   { color: var(--dim); }
+
+/* ---- legend strip (deprecated; kept for any stragglers) ---- */
+
+.legend {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--dim);
+  background: #141009;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin: 0 0 2rem;
+  line-height: 1.9;
+}
+.legend .badge { margin-left: 0; margin-right: 0.3rem; }
+
+/* ---- callout ---- */
+
+.callout {
+  border-left: 3px solid var(--accent);
+  background: #15110a;
+  padding: 1rem 1.3rem;
+  margin: 1.6rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout.warn { border-left-color: var(--amber); background: #1a1409; }
+
+/* ---- table of contents (index) ---- */
+
+.toc { list-style: none; padding: 0; margin: 1.5rem 0; }
+.toc li {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 0;
+}
+.toc li:last-child { border-bottom: none; }
+.toc a { font-size: 1.12rem; color: var(--fg-bright); }
+.toc .num { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); margin-right: 0.7rem; }
+.toc .blurb { display: block; font-size: 0.92rem; color: var(--dim); margin-top: 0.2rem; }
+
+/* ---- simple table ---- */
+
+table.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.4rem 0;
+}
+table.tbl th, table.tbl td {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+table.tbl th {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 400;
+}
+table.tbl td.mono { font-family: var(--mono); font-size: 0.78rem; }
+
+/* ---- footer ---- */
+
+footer {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--dimmer);
+}
+footer a { color: var(--dim); }
+
+/* ---- responsive ---- */
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  main { padding: 2.5rem 1.1rem 4rem; }
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.3rem; }
+  .entry { padding: 1.1rem 1.1rem 0.9rem; }
+}
