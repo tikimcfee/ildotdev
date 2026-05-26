@@ -8,9 +8,9 @@
   --accent: #a8a072;   /* links, labels, accents · ~6.7:1 · AA solid */
   --slot-bg: rgba(168, 160, 114, 0.04);
   --slot-border: rgba(168, 160, 114, 0.3); /* softened accent for slot edge */
-  --card-bg: var(--card-bg);    /* destinations + entries at rest */
-  --card-bg-hover: var(--card-bg-hover); /* destinations + entries on hover */
-  --code-bg: var(--code-bg);    /* inline code, mono tagged backgrounds */
+  --card-bg: rgba(168, 160, 114, 0.02);    /* destinations + entries at rest */
+  --card-bg-hover: rgba(168, 160, 114, 0.05); /* destinations + entries on hover */
+  --code-bg: rgba(168, 160, 114, 0.08);    /* inline code, mono tagged backgrounds */
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, Georgia, serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
