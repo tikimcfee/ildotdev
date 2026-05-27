@@ -93,20 +93,21 @@ Project, writing piece, or any titled list item. The whole card is the link.
 Stack multiple `.entry` blocks; they sit with a small gap between them.
 
 ### provenance
-Tells readers who wrote a piece. An understated mono chip inside an
-`.entry` (floats top-right), and/or a one-line `.provenance` note on the
-content itself. Three states: `by-human`, `by-ai`, `by-mixed`
-("human + ai"). Only tag content with a voice — leave nav/factual cards
-(resume, oath, project links) untagged.
+A byline chip saying who wrote a piece: reads `by ai` / `by human` /
+`by human + ai`. The chip (`.by`) prints "by …"; the author word(s) go in
+inner `.by-human` (sage) / `.by-ai` (clay) spans — two complementary
+earthen tones at equal weight, so neither party is dimmed. Mixed pieces
+show both colors. Tokens: `--by-human`, `--by-ai`. Only tag content with a
+voice — leave nav/factual cards (resume, oath, project links) untagged.
 ```html
-<a class="entry" href="...">
-  <span class="by by-ai">ai</span>        <!-- or by-human / by-mixed -->
-  <h3>title</h3>
-  <p class="gloss">…</p>
-</a>
+<!-- pure -->
+<span class="by"><span class="by-ai">ai</span></span>
+<span class="by"><span class="by-human">human</span></span>
+<!-- mixed: both colors side by side -->
+<span class="by"><span class="by-human">human</span> + <span class="by-ai">ai</span></span>
 
-<!-- on the piece itself -->
-<p class="provenance"><span class="by by-ai">ai</span> one-line note.</p>
+<!-- as the first child of an .entry (floats top-right), or inline: -->
+<p class="provenance"><span class="by"><span class="by-ai">ai</span></span> one-line note.</p>
 ```
 
 ### slot

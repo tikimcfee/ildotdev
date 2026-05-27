@@ -9,5 +9,5 @@
 </script>
 
 <PriorArtNav />
-<p class="provenance"><span class="by by-ai">ai</span> Written by Claude — a research survey, not Ivan's prose.</p>
+<p class="provenance"><span class="by"><span class="by-ai">ai</span></span> a research survey assembled by Claude — not Ivan's prose.</p>
 {@render children()}

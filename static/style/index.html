@@ -171,33 +171,35 @@
 
     <div class="component">
         <h2>provenance</h2>
-        <p class="note">Tells the reader who wrote a piece. Add a <code>.by</code> chip inside an <code>.entry</code> (it floats to the top-right), and/or a <code>.provenance</code> line on the content itself. Three states: <code>.by-human</code>, <code>.by-ai</code>, <code>.by-mixed</code>. Only for content with a voice — leave nav/factual cards untagged.</p>
+        <p class="note">A byline chip saying who wrote a piece. Add a <code>.by</code> chip inside an <code>.entry</code> (it floats top-right) and/or a <code>.provenance</code> line on the content itself. The chip prints "by …"; the author word(s) go in inner <code>.by-human</code> (sage) / <code>.by-ai</code> (clay) spans — two complementary tones at equal weight. Mixed pieces show both. Only for content with a voice — leave nav/factual cards untagged.</p>
         <div class="preview">
             <a class="entry" href="#">
-                <span class="by by-ai">ai</span>
+                <span class="by"><span class="by-ai">ai</span></span>
                 <div class="meta">2026-05</div>
                 <h3>a generated piece</h3>
                 <p class="gloss">research notes, a survey, anything machine-written.</p>
             </a>
             <a class="entry" href="#">
-                <span class="by by-human">human</span>
+                <span class="by"><span class="by-human">human</span></span>
                 <h3>a piece you wrote</h3>
                 <p class="gloss">your words, your voice.</p>
             </a>
             <a class="entry" href="#">
-                <span class="by by-mixed">human + ai</span>
+                <span class="by"><span class="by-human">human</span> + <span class="by-ai">ai</span></span>
                 <h3>a collaboration</h3>
                 <p class="gloss">a draft you revised, or your reply to a generated piece.</p>
             </a>
-            <p class="provenance" style="margin-top:1.5rem"><span class="by by-ai">ai</span> Written by Claude — the one-line version, for the body of a piece.</p>
+            <p class="provenance" style="margin-top:1.5rem"><span class="by"><span class="by-ai">ai</span></span> the one-line version, for the body of a piece.</p>
         </div>
-        <pre class="code">&lt;a class="entry" href="..."&gt;
-  &lt;span class="by by-ai"&gt;ai&lt;/span&gt;        &lt;!-- or by-human / by-mixed --&gt;
-  &lt;h3&gt;title&lt;/h3&gt;
-  &lt;p class="gloss"&gt;…&lt;/p&gt;
-&lt;/a&gt;
+        <pre class="code">&lt;!-- pure: --&gt;
+&lt;span class="by"&gt;&lt;span class="by-ai"&gt;ai&lt;/span&gt;&lt;/span&gt;
+&lt;span class="by"&gt;&lt;span class="by-human"&gt;human&lt;/span&gt;&lt;/span&gt;
 
-&lt;p class="provenance"&gt;&lt;span class="by by-ai"&gt;ai&lt;/span&gt; one-line note.&lt;/p&gt;</pre>
+&lt;!-- mixed (both colors): --&gt;
+&lt;span class="by"&gt;&lt;span class="by-human"&gt;human&lt;/span&gt; + &lt;span class="by-ai"&gt;ai&lt;/span&gt;&lt;/span&gt;
+
+&lt;!-- on the piece itself: --&gt;
+&lt;p class="provenance"&gt;&lt;span class="by"&gt;&lt;span class="by-ai"&gt;ai&lt;/span&gt;&lt;/span&gt; note.&lt;/p&gt;</pre>
     </div>
 
     <div class="component">

@@ -6,6 +6,8 @@
   --dim: #a39a7f;      /* secondary text, nav, gloss · ~7:1 · AAA */
   --rule: #2a261b;     /* hairlines · decorative */
   --accent: #a8a072;   /* links, labels, accents · ~6.7:1 · AA solid */
+  --by-human: #a8a072; /* provenance: human · sage · ~6.7:1 */
+  --by-ai: #c2886a;    /* provenance: ai · clay/terracotta · ~6.6:1 — complementary, equal weight */
   --slot-bg: rgba(168, 160, 114, 0.04);
   --slot-border: rgba(168, 160, 114, 0.3); /* softened accent for slot edge */
   --card-bg: rgba(168, 160, 114, 0.02);    /* destinations + entries at rest */
@@ -203,25 +205,28 @@ a:hover { border-bottom-color: var(--accent); }
   margin-bottom: 0.4rem;
 }
 
-/* ---- Provenance: who wrote this. An understated mono chip, floated to
-   the card's top-right (echoes the old slot floater). Only for cards that
-   carry prose with a voice; nav/factual cards stay untagged. Values:
-   .by-human · .by-ai · .by-mixed ("human + ai"). ---- */
+/* ---- Provenance: a byline chip saying who wrote a piece. Echoes the old
+   slot floater (top-right of a card). Reads "by ai" / "by human" /
+   "by human + ai" — human in sage, ai in clay: two complementary earthen
+   tones at equal weight, neither outshining the other. The author word(s)
+   go in inner .by-human / .by-ai spans; "by" + separators stay neutral.
+   Only for content with a voice; nav/factual cards stay untagged. ---- */
 .by {
   float: right;
   margin-left: 0.6rem;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
   line-height: 1.4;
-  padding: 0.12em 0.5em;
+  padding: 0.14em 0.55em;
   border: 1px solid var(--rule);
   border-radius: 3px;
   color: var(--dim);
   white-space: nowrap;
 }
-.by-human, .by-mixed { color: var(--accent); }   /* human had a hand in it */
-.by-ai { color: var(--dim); }                     /* generated, neutral */
+.by::before { content: "by "; color: var(--dim); }
+.by-human { color: var(--by-human); }
+.by-ai { color: var(--by-ai); }
 
 /* A one-line version for the body of a piece itself. */
 .provenance {

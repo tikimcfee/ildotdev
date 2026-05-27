@@ -29,7 +29,7 @@
 		</a>
 
 		<a class="entry" href="/prior-art/">
-			<span class="by by-ai">ai</span>
+			<span class="by"><span class="by-ai">ai</span></span>
 			<h3>prior art</h3>
 			<p class="gloss">Field survey of spatial whole-codebase visualization — the prototypes, products, and rendering techniques glyph3d-js sits among.</p>
 		</a>
