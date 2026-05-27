@@ -35,7 +35,7 @@
 
 		<p>
 		I need you to see that the angry I have is toward myself, and it is a reflection of what I have been a part of. I am a symptom and a disease, and it hurts. I'm overcorrecting, I'm flailing, and I'm realizing I'm underequipped for the world that's changing around me, and I fear a lot of other people are just like me out there because there truly is nothing new under the sun.
-		<p>
+		</p>
 
 		<p>
 		I haven't stated my thesis yet. If my IDH professors were reading this now they'd be livid with me, in a jovial way. I'd like to think they knew me pretty well, insofar as I allowed myself to be known. But here ya go, the thesis:
@@ -48,7 +48,7 @@
 		</p>
 
 		<p>
-		I have watched my family members that told me about the nature of human cooperation and its importance to human coexistence slowly and morph into ghoulish mimics of themselves, subsumed by hateful targeted misinformation made more salient by their own personal confusions and misgivings of the world - scientific or otherwise. I have watched the world give rise to humans with so much excess in their lives that excess isn't an excessive enough word. "Billions" and "trillions" don't even make sense any more, high scores labeling how much a name is allowed to control you. I have watched societies decide amongst themselves that phrases like, <code>What's wrong with xenophobic nationalism?</code> are not just common, they're surrounded by people that agree with it. I have watched technologists surround themselves with the cold comfort of optimization and lie to themselves and others that the inevitable forward arrow of progress is going to be great for everyone - but mostly just trust-me-bro, you'll get yours too, soon. Just buy this one more thing and sign this here..
+		I have watched my family members that told me about the nature of human cooperation and its importance to human coexistence slowly twist and morph into ghoulish mimics of themselves, subsumed by hateful targeted misinformation made more salient by their own personal confusions and misgivings of the world - scientific or otherwise. I have watched the world give rise to humans with so much excess in their lives that excess isn't an excessive enough word. "Billions" and "trillions" don't even make sense any more, high scores labeling how much a name is allowed to control you. I have watched societies decide amongst themselves that phrases like, <code>What's wrong with xenophobic nationalism?</code> are not just common, they're surrounded by people that agree with it. I have watched technologists surround themselves with the cold comfort of optimization and lie to themselves and others that the inevitable forward arrow of progress is going to be great for everyone - but mostly just trust-me-bro, you'll get yours too, soon. Just buy this one more thing and sign this here..
 		</p>
 
 		<p>
@@ -80,11 +80,11 @@
 		</p>
 
 		<p>
-		... and that's why I'm so angry. I feel powerless. I feel as a cog. I feel as if the machine I'm in is a human grinder. I don't want to be a cog, and I can't help but be it. I see other cogs spinning, some in just as much anger and pain and hurt, and yet we spin on. We can't help by exist in the universe and grind humans because we were born, and we made the decision every minute of every day to not live in the service of a future where flourishing human existence was a goal, and not series-bound sci-fi fantasy for escaping into.
+		... and that's why I'm so angry. I feel powerless. I feel as a cog. I feel as if the machine I'm in is a human grinder. I don't want to be a cog, and I can't help but be it. I see other cogs spinning, some in just as much anger and pain and hurt, and yet we spin on. We can't help but exist in the universe and grind humans because we were born, and we made the decision every minute of every day to not live in the service of a future where flourishing human existence was a goal, and not series-bound sci-fi fantasy for escaping into.
 		</p>
 
 		<p>
-		I'm angry because I realize that what's happening in tech is that it's killing humanity, and it's being done by people that are humans (well... I guess in a genetic sense, oo what a burn...) and I cannot. In any meaningful way. Any way I've found. Any way that motivates me any more... to get them to stop.
+		I'm angry because I realize that what's happening in tech is that it's killing humanity, and it's being done by people that are humans (well... I guess in a genetic sense, oo what a burn...) and I cannot. In any meaningful way. Any way I've found. Any way that motivates me any more... get them to stop.
 		</p>
 
 		<p>
@@ -92,7 +92,7 @@
 		</p>
 
 		<p>
-		What's going on in tech is it's not tech anymore. It hasn't been for a long time. And we as humans seem to desire not to realize that. It's how we educate each other. It's how we feed ourselves and each other. It's how we heal ourselves and each other. "tech" is the idea that we can build something for ourselves and others that says, "Here, fellow human - here's something that makes the universe a little less sharp for you today. What's going on in tech isn't that anymore. It's about turning inactivity and compounding social financial interest into more for oneself.
+		What's going on in tech is it's not tech anymore. It hasn't been for a long time. And we as humans seem to desire not to realize that. It's how we educate each other. It's how we feed ourselves and each other. It's how we heal ourselves and each other. "tech" is the idea that we can build something for ourselves and others that says, "Here, fellow human - here's something that makes the universe a little less sharp for you today". What's going on in tech isn't that anymore. It's about turning inactivity and compounding social financial interest into more for oneself.
 		</p>
 
 		<p>
