@@ -13,6 +13,7 @@
 		<span class="label">pieces</span>
 
 		<a class="entry" href="/prior-art/">
+			<span class="by by-ai">ai</span>
 			<div class="meta">2026-05</div>
 			<h3>prior art: rendering a whole codebase, spatially</h3>
 			<p class="gloss">A field survey of every tool that has tried to render an entire repository as one navigable thing — code cities, VR IDEs, source-in-3D prototypes, and the GPU text engines underneath. Honest status, real links.</p>

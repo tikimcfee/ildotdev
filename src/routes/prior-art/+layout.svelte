@@ -9,4 +9,5 @@
 </script>
 
 <PriorArtNav />
+<p class="provenance"><span class="by by-ai">ai</span> Written by Claude — a research survey, not Ivan's prose.</p>
 {@render children()}

@@ -203,6 +203,39 @@ a:hover { border-bottom-color: var(--accent); }
   margin-bottom: 0.4rem;
 }
 
+/* ---- Provenance: who wrote this. An understated mono chip, floated to
+   the card's top-right (echoes the old slot floater). Only for cards that
+   carry prose with a voice; nav/factual cards stay untagged. Values:
+   .by-human · .by-ai · .by-mixed ("human + ai"). ---- */
+.by {
+  float: right;
+  margin-left: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  padding: 0.12em 0.5em;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.by-human, .by-mixed { color: var(--accent); }   /* human had a hand in it */
+.by-ai { color: var(--dim); }                     /* generated, neutral */
+
+/* A one-line version for the body of a piece itself. */
+.provenance {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--dim);
+  margin: 0 0 1.5rem;
+}
+.provenance .by { float: none; margin: 0; }
+
 /* ---- Slot (placeholder waiting for words) ---- */
 .slot {
   display: block;

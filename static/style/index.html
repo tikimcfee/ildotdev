@@ -170,6 +170,37 @@
     </div>
 
     <div class="component">
+        <h2>provenance</h2>
+        <p class="note">Tells the reader who wrote a piece. Add a <code>.by</code> chip inside an <code>.entry</code> (it floats to the top-right), and/or a <code>.provenance</code> line on the content itself. Three states: <code>.by-human</code>, <code>.by-ai</code>, <code>.by-mixed</code>. Only for content with a voice — leave nav/factual cards untagged.</p>
+        <div class="preview">
+            <a class="entry" href="#">
+                <span class="by by-ai">ai</span>
+                <div class="meta">2026-05</div>
+                <h3>a generated piece</h3>
+                <p class="gloss">research notes, a survey, anything machine-written.</p>
+            </a>
+            <a class="entry" href="#">
+                <span class="by by-human">human</span>
+                <h3>a piece you wrote</h3>
+                <p class="gloss">your words, your voice.</p>
+            </a>
+            <a class="entry" href="#">
+                <span class="by by-mixed">human + ai</span>
+                <h3>a collaboration</h3>
+                <p class="gloss">a draft you revised, or your reply to a generated piece.</p>
+            </a>
+            <p class="provenance" style="margin-top:1.5rem"><span class="by by-ai">ai</span> Written by Claude — the one-line version, for the body of a piece.</p>
+        </div>
+        <pre class="code">&lt;a class="entry" href="..."&gt;
+  &lt;span class="by by-ai"&gt;ai&lt;/span&gt;        &lt;!-- or by-human / by-mixed --&gt;
+  &lt;h3&gt;title&lt;/h3&gt;
+  &lt;p class="gloss"&gt;…&lt;/p&gt;
+&lt;/a&gt;
+
+&lt;p class="provenance"&gt;&lt;span class="by by-ai"&gt;ai&lt;/span&gt; one-line note.&lt;/p&gt;</pre>
+    </div>
+
+    <div class="component">
         <h2>slot</h2>
         <p class="note">A placeholder waiting for words. The <code>data-name</code> shows as a small floater in the top right. Replace the entire <code>&lt;div class="slot"&gt;…&lt;/div&gt;</code> with your real content when ready.</p>
         <div class="preview">

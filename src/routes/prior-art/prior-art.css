@@ -48,6 +48,9 @@ a { border-bottom: none; }
 .entry:hover h3 { color: var(--fg-bright); }
 .entry + .entry { margin-top: 1rem; }
 
+/* Center the provenance line (base style in /styles.css) to the content column. */
+.provenance { max-width: 52rem; margin: 1.5rem auto 0; padding: 0 1.5rem; }
+
 /* ---- layout ---- */
 
 .topbar {

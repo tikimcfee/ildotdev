@@ -92,6 +92,23 @@ Project, writing piece, or any titled list item. The whole card is the link.
 ```
 Stack multiple `.entry` blocks; they sit with a small gap between them.
 
+### provenance
+Tells readers who wrote a piece. An understated mono chip inside an
+`.entry` (floats top-right), and/or a one-line `.provenance` note on the
+content itself. Three states: `by-human`, `by-ai`, `by-mixed`
+("human + ai"). Only tag content with a voice — leave nav/factual cards
+(resume, oath, project links) untagged.
+```html
+<a class="entry" href="...">
+  <span class="by by-ai">ai</span>        <!-- or by-human / by-mixed -->
+  <h3>title</h3>
+  <p class="gloss">…</p>
+</a>
+
+<!-- on the piece itself -->
+<p class="provenance"><span class="by by-ai">ai</span> one-line note.</p>
+```
+
 ### slot
 Placeholder waiting for words. Replace the entire `<div class="slot">…</div>`
 with your real content when ready.
