@@ -294,6 +294,22 @@ a:hover { border-bottom-color: var(--accent); }
 }
 .entry .slot p.shape { display: none; }
 
+/* ---- Aside: a set-apart author's note or disclaimer inside a piece.
+   The slot's bordered, faintly-tinted look, but a real component — no
+   [name] floater, no placeholder semantics. ---- */
+.aside {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: inset 2px 0 0 var(--slot-border);
+  background: var(--slot-bg);
+  padding: 0.9rem 1.2rem 0.9rem 1.4rem;
+  margin: 1rem 0 1.75rem;
+  color: var(--dim);
+  font-size: 0.96rem;
+}
+.aside p { margin: 0 0 0.6rem; }
+.aside p:last-child { margin-bottom: 0; }
+
 /* ---- Article (writing piece) ---- */
 article { margin-top: 1rem; }
 article p { margin-bottom: 1rem; }

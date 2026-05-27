@@ -6,11 +6,18 @@
 	<h1 class="sr-only">writing</h1>
 
 	<section>
-		<p>Notes and writeups — mostly on the things in <a href="/projects/">projects</a>: rendering, performance, and the road from idea to shipped.</p>
+		<p>Notes and writeups. Things I think about, care about, want to share.</p>
 	</section>
 
 	<section>
 		<span class="label">pieces</span>
+
+		<a class="entry" href="/writing/first-words/">
+			<span class="by"><span class="by-human">human</span></span>
+			<div class="meta">2026-05</div>
+			<h3>Me, in 2026</h3>
+			<p class="gloss">In which I write my own words for people about what's what.</p>
+		</a>
 
 		<a class="entry" href="/prior-art/">
 			<span class="by"><span class="by-ai">ai</span></span>

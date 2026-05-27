@@ -120,6 +120,16 @@ with your real content when ready.
 </div>
 ```
 
+### aside
+A set-apart author's note or disclaimer inside a piece — the slot's
+bordered, faintly-tinted look, but a real component (no `[name]` floater,
+no placeholder meaning).
+```html
+<div class="aside">
+  <p>A note framing the piece — a disclaimer, an editorial aside.</p>
+</div>
+```
+
 ### article
 For a writing piece. See `/writing/_template.html` for the starter.
 ```html
