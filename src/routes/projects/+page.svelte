@@ -1,3 +1,7 @@
+<script>
+	import Glyph3dCard from '$lib/Glyph3dCard.svelte';
+</script>
+
 <svelte:head>
 	<title>projects — ivanlugo.dev</title>
 </svelte:head>
@@ -19,9 +23,6 @@
 	<section>
 		<span class="label">active</span>
 
-		<a class="entry" href="https://github.com/tikimcfee/glyph3d-js">
-			<h3>glyph3d</h3>
-			<p class="gloss">GPU-instanced 3D text rendering for Three.js — thousands of glyphs in a single draw call. Live at glyph3d.dev; source on GitHub.</p>
-		</a>
+		<Glyph3dCard />
 	</section>
 </main>
