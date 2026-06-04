@@ -17,5 +17,5 @@
 		<a href={v.href} class:here={page.url.pathname === v.href}>{v.label}</a>
 	{/each}
 	<span class="spacer"></span>
-	<a href="/ide">↩ glyph3d</a>
+	<a href="https://glyph3d.dev">↩ glyph3d</a>
 </nav></div>

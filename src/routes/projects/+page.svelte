@@ -6,10 +6,6 @@
 	<h1 class="sr-only">projects</h1>
 
 	<div class="destinations">
-		<a class="destination" href="/ide">
-			<span class="label">ide</span>
-			<span class="title">open the IDE <span class="arrow">→</span></span>
-		</a>
 		<a class="destination" href="https://github.com/tikimcfee">
 			<span class="label">github</span>
 			<span class="title">tikimcfee <span class="arrow">→</span></span>
@@ -17,16 +13,11 @@
 	</div>
 
 	<section>
-		<p>Things built and maintained. The 3D code-visualization stack below is the active focus; the rest live on GitHub.</p>
+		<p>Things built and maintained live on GitHub. The notes below survey the field the 3D code-visualization work sits in.</p>
 	</section>
 
 	<section>
 		<span class="label">active</span>
-
-		<a class="entry" href="/ide">
-			<h3>glyph3d-js</h3>
-			<p class="gloss">GPU-instanced 3D text rendering for Three.js. Grid, hierarchical, and custom layouts for source-code visualization, with a browser IDE on top. No build step.</p>
-		</a>
 
 		<a class="entry" href="/prior-art/">
 			<span class="by"><span class="by-ai">ai</span></span>
