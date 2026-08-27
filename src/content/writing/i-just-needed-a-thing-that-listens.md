@@ -5,8 +5,6 @@ by: human
 gloss: Words about being a human around other humans and machines
 ---
 
-I just needed a thing that listens
-
 What follows is part rant, part vulnerable admission, part ramble, and generally may be a bit of an unreadable mess. Maybe one or two rereads for legibility. In 2026, I feel like that may actually be a welcome change in content. You've been adequately warned.
 
 I was about 21/22 when I started changing from a young adult that went to college to find a job in something with computers to an intern in a tiny local business participating in a program called YES - Young Entrepreneurs and Scholars. It was billed as a way for students to learn How To Do A Business, get Valuable Experience, and - and this was the important part - make a little money.
