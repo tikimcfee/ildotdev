@@ -50,27 +50,40 @@ $ find ~/dev/ildotdev/src -type f
 src/app.html                              # HTML shell; links /styles.css (not bundled)
 src/lib/Nav.svelte                        # the one shared nav — edit links here
 src/lib/PriorArtNav.svelte                # prior-art volume bar
+src/lib/Glyph3dCard.svelte                # shared glyph3d card (site + source links)
+src/lib/by.js                             # provenance chip markup (human/ai), client-safe
+src/lib/writing.server.js                 # the writing store: globs content/*.md, renders w/ marked
+src/content/writing/first-words.md        # a writing piece = one markdown file + frontmatter
 src/routes/+layout.js                     # prerender = true, trailingSlash = 'always'
 src/routes/+layout.svelte                 # root: <Nav/> + page
 src/routes/+page.svelte                   # home
 src/routes/projects/+page.svelte
-src/routes/writing/+page.svelte
+src/routes/writing/+page.svelte           # index — builds itself from content/writing/*.md
+src/routes/writing/+page.server.js        # load: getAllPosts() + `extra` (prior-art)
+src/routes/writing/[slug]/+page.svelte    # one piece: chrome from frontmatter + {@html body}
+src/routes/writing/[slug]/+page.server.js # load(slug) + entries() for prerender
 src/routes/work/+page.svelte
 src/routes/prior-art/+layout.svelte       # nests under root layout; adds PriorArtNav
 src/routes/prior-art/prior-art.css        # survey's own stylesheet (its own world)
 src/routes/prior-art/+page.svelte         # survey index
 src/routes/prior-art/{rendered-text,code-cities,vr-commercial,web-generative,gpu-text,positioning}/+page.svelte
 
+$ ls ~/dev/ildotdev/scripts   # authoring helpers (Node, run via npm)
+new-writing.mjs   # npm run write -- "Title"   → scaffolds src/content/writing/<slug>.md
+publish.mjs       # npm run ship  -- "msg"      → build + commit + push + box pull (clean-tree guarded)
+
 $ ls ~/dev/ildotdev/static    # served as-is, not prerendered
 favicon.ico  nav.js  oath.html  resume/  style/  styles.css  writing/
-# (static/style/ = the unlisted styleguide; static/writing/ = building-glyph3d.html
-#  draft + _template.html; both still plain static HTML, own inline <nav>)
-# captured 2026-05-26 02:56 UTC
+# (static/style/ = the unlisted styleguide; static/writing/ = LEGACY building-glyph3d.html
+#  draft + _template.html — superseded by the markdown system; still plain static HTML)
+# captured 2026-06-25 00:37 UTC
 ```
 
-`package.json` scripts: `npm run dev` (live edit), `npm run build`
-(regenerate `build/`), `npm run preview`. No test runner. Always
-`npm run build` before committing — `build/` is the deployed artifact.
+`package.json` scripts: `npm run dev` (live edit — doubles as the live
+markdown preview), `npm run build` (regenerate `build/`), `npm run preview`,
+`npm run write -- "Title"` (scaffold a piece), `npm run ship -- "msg"`
+(build+commit+push+deploy). No test runner. Always `npm run build` before
+committing — `build/` is the deployed artifact (`npm run ship` does it for you).
 
 ## Design system
 
@@ -81,8 +94,17 @@ sage/olive accent. Tokens, contrast targets, and component snippets are in
 `THEME.md`. A live render of every component lives at `/style/` (visit
 directly; not linked from nav).
 
-- **Add a writing piece:** create `src/routes/writing/<slug>/+page.svelte`,
-  then add an `<a class="entry">` for it in `src/routes/writing/+page.svelte`.
+- **Add a writing piece:** `npm run write -- "My Title"` scaffolds
+  `src/content/writing/<slug>.md` (frontmatter: `title`, `date`, `by`,
+  `gloss`, optional `headline`) — write plain markdown in the body, preview
+  live with `npm run dev`, ship with `npm run ship -- "writing: add …"`. The
+  index and the `/writing/<slug>/` route build themselves; no second edit.
+  Body markdown passes raw HTML straight through (`marked`), so asides
+  (`<div class="aside">…`) and interactive embeds
+  (`<div class="embed" data-embed="NAME">`, hydrated by a prebuilt bundle in
+  `static/embeds/`) just work. Non-markdown pieces that still belong in the
+  index (e.g. the prior-art survey route) go in the `extra` array in
+  `src/routes/writing/+page.server.js`.
 - **Add a top-level page:** create `src/routes/<page>/+page.svelte`, then add
   one entry to the `links` array in `src/lib/Nav.svelte` (the only place the
   nav is defined — every page picks it up).
@@ -127,10 +149,10 @@ origin	git@github.com:tikimcfee/ildotdev (push)
 
 ```
 $ ssh nerdcave 'uptime; df -h / | tail -1; systemctl is-active caddy'
- 01:31:20 up 49 days,  3:18,  2 users,  load average: 0.00, 0.00, 0.00
-/dev/sda1        75G  7.3G   65G  11% /
+ 19:30:39 up 24 days,  5:49,  1 user,  load average: 0.12, 0.08, 0.07
+/dev/sda1        75G  8.5G   64G  12% /
 active
-# captured 2026-05-17 01:31 UTC
+# captured 2026-08-08 19:30 UTC — box rebooted ~2026-07-15
 ```
 
 Hetzner box in Falkenstein. `ssh nerdcave` works directly. Caddy is a systemd
@@ -143,9 +165,9 @@ $ ssh nerdcave 'git -C /srv/www/ildotdev remote -v; git -C /srv/www/ildotdev bra
 origin	http://github.com/tikimcfee/ildotdev (fetch)
 origin	http://github.com/tikimcfee/ildotdev (push)
 main
-97b1370 resume: <link> font loading + preconnect; relax mobile media query
+0ef7890 site: shared Glyph3dCard affording both links (site + source)
 ## main...origin/main
-# captured 2026-05-17 01:31 UTC
+# captured 2026-08-08 19:30 UTC — tree clean, in sync with origin
 ```
 
 To ship: `npm run build` locally (regenerates `build/`), commit source +
@@ -155,19 +177,18 @@ The box runs no build — it just pulls the committed `build/`. Always run
 or stomp local edits if anything was changed directly on the box. Confirm
 with the user before the pull.
 
-**One-time Caddy change (required for the SvelteKit cutover):** the
-`ivanlugo.dev` root must point at the build output, not the repo root:
+**Caddy root for the SvelteKit build (applied):** the `ivanlugo.dev`
+`handle` block roots at the build output:
 
 ```
-# in the `handle { ... }` block of /etc/caddy/Caddyfile:
--   root * /srv/www/ildotdev
-+   root * /srv/www/ildotdev/build
+$ ssh nerdcave 'grep -n "root \* /srv/www/ildotdev" /etc/caddy/Caddyfile'
+22:		root * /srv/www/ildotdev/build
+# captured 2026-08-08 19:31 UTC
 ```
 
-then `ssh nerdcave 'systemctl reload caddy'`. `/ide`, `/oath`,
-`/downloads` are unaffected (separate handle blocks). Until this lands the
-site still serves the pre-migration flat files. **Pending as of the
-migration commit — not yet applied to the box.**
+`/ide`, `/oath`, `/downloads` are unaffected (separate handle blocks).
+Scanners probe `/.git/config` regularly; `.git` sits above `build/`, outside
+the web root — verified 404 (2026-08-08).
 
 ## Deploy paths exist
 

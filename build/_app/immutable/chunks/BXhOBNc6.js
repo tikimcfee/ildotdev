@@ -1,0 +1,1 @@
+function e(e){switch(e){case`human`:return`<span class="by-human">human</span>`;case`ai`:return`<span class="by-ai">ai</span>`;case`human+ai`:return`<span class="by-human">human</span> + <span class="by-ai">ai</span>`;default:return``}}export{e as t};

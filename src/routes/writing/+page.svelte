@@ -1,3 +1,8 @@
+<script>
+	import { byInner } from '$lib/by.js';
+	let { data } = $props();
+</script>
+
 <svelte:head>
 	<title>writing — ivanlugo.dev</title>
 </svelte:head>
@@ -12,30 +17,16 @@
 	<section>
 		<span class="label">pieces</span>
 
-		<a class="entry" href="/writing/first-words/">
-			<span class="by"><span class="by-human">human</span></span>
-			<div class="meta">2026-05</div>
-			<h3>Me, in 2026</h3>
-			<p class="gloss">In which I write my own words for people about what's what.</p>
-		</a>
-
-		<a class="entry" href="/prior-art/">
-			<span class="by"><span class="by-ai">ai</span></span>
-			<div class="meta">2026-05</div>
-			<h3>prior art: rendering a whole codebase, spatially</h3>
-			<p class="gloss">A field survey of every tool that has tried to render an entire repository as one navigable thing — code cities, VR IDEs, source-in-3D prototypes, and the GPU text engines underneath. Honest status, real links.</p>
-		</a>
-
-		<!-- To add a piece: create src/routes/writing/your-slug/+page.svelte
-		     (it inherits the shared nav), then add an <a class="entry"> here:
-
-		     <a class="entry" href="/writing/your-slug/">
-		       <div class="meta">2026-05</div>
-		       <h3>piece title</h3>
-		       <p class="gloss">one-line description.</p>
-		     </a>
-
-		     static/writing/building-glyph3d.html exists but is unlisted —
-		     its body was Claude-drafted, awaiting your call to keep/rewrite/cut. -->
+		<!-- This list builds itself from src/content/writing/*.md (newest first),
+		     merged with the `extra` routes in +page.server.js. To add a piece:
+		     `npm run write -- "Title"`, write it, `npm run ship -- "msg"`. -->
+		{#each data.posts as p (p.href)}
+			<a class="entry" href={p.href}>
+				{#if p.by}<span class="by">{@html byInner(p.by)}</span>{/if}
+				<div class="meta">{p.date}</div>
+				<h3>{p.title}</h3>
+				<p class="gloss">{p.gloss}</p>
+			</a>
+		{/each}
 	</section>
 </main>

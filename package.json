@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "write": "node scripts/new-writing.mjs",
+    "ship": "node scripts/publish.mjs"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",
@@ -14,5 +16,8 @@
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "svelte": "^5.55.9",
     "vite": "^8.0.14"
+  },
+  "dependencies": {
+    "marked": "^18.0.5"
   }
 }
